@@ -43,8 +43,8 @@ public class Pedido {
         return getCarrinho().calculaTotalCompra();
     }
 
-    public void mostrarPedido(){
-        for(Produto produto: getCarrinho().getProdutos()){
+    public void mostrarPedido(Pedido pedido){
+        for(Produto produto: pedido.carrinho.getProdutos()){
             System.out.printf("%d - %s -------------------- %lf\n", produto.getId_produto(), produto.getNome(), produto.getPreco());
         }
         System.out.printf("Total: %lf", getTotalPedido());
@@ -53,19 +53,25 @@ public class Pedido {
     public void concluirPedido(){
         if(status == StatusPedido.PROCESSANDO){
             status = StatusPedido.ENTREGUE;
-            cliente.adicionarAoHistorico(this);
+            this.cliente.adicionarAoHistorico(this);
         }
     }
 
-    public void processarPagamento(Pagamento pagamento){
-        pagamento.processar();
-        if(pagamento.getStatus() == StatusPagamento.CONCLUIDO){
-            status = StatusPedido.PROCESSANDO;
-            //Ataulizar estoque
-            status = StatusPedido.ENTREGUE;
-            this.concluirPedido();
+    public void cancelarPedido(){
+        if(status == StatusPedido.PROCESSANDO){
+            status = StatusPedido.CANCELADO;
         }
     }
+
+    
+    public void mostrarHistorico(){
+        System.out.println("=-=-=-=-=-=-=-=-=-=- Lista de Pedidos =-=-=-=-=--=-==-=-=-");
+        for (Pedido pedido: this.cliente.getHistoricoCompras()){
+            mostrarPedido(pedido);
+            System.out.println("\n");
+        }
+    }
+    
 }
 
 enum StatusPedido {

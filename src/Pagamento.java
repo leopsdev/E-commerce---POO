@@ -3,13 +3,13 @@ import java.time.LocalDateTime;
 public class Pagamento {
     private TipoPagamento tipo;
     private String info;
-    private StatusPagamento status;
+    private StatusPagamento status_pagamento;
     private LocalDateTime data;
 
     public Pagamento(TipoPagamento tipo, String info) {
         this.tipo = tipo;
         this.info = info;
-        this.status = StatusPagamento.PENDENTE;
+        this.status_pagamento = StatusPagamento.PENDENTE;
         this.data = LocalDateTime.now();
     }
     
@@ -26,10 +26,10 @@ public class Pagamento {
         this.info = info;
     }
     public StatusPagamento getStatus() {
-        return status;
+        return status_pagamento;
     }
     public void setStatus(StatusPagamento status) {
-        this.status = status;
+        this.status_pagamento = status;
     }
     public LocalDateTime getData() {
         return data;
@@ -38,18 +38,23 @@ public class Pagamento {
         this.data = data;
     }
 
-    public void processar(){
-        if(tipo == TipoPagamento.CARTAO_CREDITO || tipo == TipoPagamento.CARTAO_DEBITO || tipo == TipoPagamento.PIX || tipo == TipoPagamento.TRASNFERENCIA){
-            status = StatusPagamento.CONCLUIDO;
+    public void processarPagamento(Pedido pedido){
+        if(tipo == TipoPagamento.CARTAO_CREDITO || tipo == TipoPagamento.CARTAO_DEBITO || tipo == TipoPagamento.PIX || tipo == TipoPagamento.TRANSFERENCIA){
+            status_pagamento = StatusPagamento.CONCLUIDO;
         }
         else{
-            status = StatusPagamento.CANCELADO;
+            status_pagamento = StatusPagamento.CANCELADO;
+        }
+        if(status_pagamento == StatusPagamento.CONCLUIDO){
+            pedido.setStatus(StatusPedido.PROCESSANDO);
+            pedido.concluirPedido();
+            // Atualizar estoque;
         }
     }
 }
 
 enum TipoPagamento{
-    CARTAO_CREDITO, CARTAO_DEBITO, PIX, TRASNFERENCIA;
+    CARTAO_CREDITO, CARTAO_DEBITO, PIX, TRANSFERENCIA;
 }
 
 enum StatusPagamento{

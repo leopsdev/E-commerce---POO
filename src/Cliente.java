@@ -66,19 +66,19 @@ public class Cliente {
     }
     public void realizarCompra(Pagamento pagamento){
         Pedido pedido = new Pedido(this, carrinho);
-        pedido.mostrarPedido();
-        pedido.processarPagamento(pagamento);
+        pedido.mostrarPedido(pedido);
+        pagamento.processarPagamento(pedido);
         historicoCompras.add(pedido);
         carrinho.limparCarrinho();
         // Diminuir estoque
     }
 
     public void adicionarListaDeDesejos(Produto produto){
-        getListaDesejos().add(produto);
+        this.listaDesejos.add(produto);
     }
 
     public void adicionarAoHistorico(Pedido pedido){
-        historicoCompras.add(pedido);
+        this.historicoCompras.add(pedido);
     }
     
 }

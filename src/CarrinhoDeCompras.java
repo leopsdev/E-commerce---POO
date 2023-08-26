@@ -11,10 +11,10 @@ public class CarrinhoDeCompras{
         this.lista_produtos = lista_produtos;
     }
     public void adicionarProduto(Produto produto, int quantidade) {
-        lista_produtos.put(produto, quantidade);
+        this.lista_produtos.put(produto, quantidade);
     }
     public void removerProduto(Produto produto){
-        lista_produtos.remove(produto);
+        this.lista_produtos.remove(produto);
     }
     public ArrayList<Produto> getProdutos(){
         ArrayList<Produto> produtos = new ArrayList<>();
@@ -39,6 +39,6 @@ public class CarrinhoDeCompras{
         return total;
     }
     public void limparCarrinho(){
-        lista_produtos.clear();
+        this.lista_produtos.clear();
     }
 }
