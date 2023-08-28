@@ -19,4 +19,4 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 
 # Projeto - E-Commerce - POO
 Projeto em desenvolvimento de um E-commerce, o FRALD!
-Contribuidores: Davi Santos Alexandrino, Francisco Guilherme Cesário, Leonardo Pereira Silva.
+Contribuidores: Davi Santos Alexandrino, Francisco Guilherme Cesário e Leonardo Pereira Silva.
