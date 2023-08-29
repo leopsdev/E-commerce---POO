@@ -80,5 +80,9 @@ public class Cliente {
     public void adicionarAoHistorico(Pedido pedido){
         this.historicoCompras.add(pedido);
     }
+
+    public Boolean temHistorico(){
+        return !historicoCompras.isEmpty();
+    }
     
 }

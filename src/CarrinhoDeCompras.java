@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CarrinhoDeCompras{
+    private Cliente cliente;
+
     private Map<Produto, Integer> lista_produtos = new HashMap<>();
     public Map<Produto, Integer> getLista_produtos() {
         return lista_produtos;
@@ -36,9 +38,32 @@ public class CarrinhoDeCompras{
         for(Produto produto: produtos){
             total += produto.getPreco();
         }
-        return total;
+        boolean tamHistorico = cliente.temHistorico();
+        double ntotal = aplicarDesconto(total,tamHistorico);
+        return ntotal;
     }
     public void limparCarrinho(){
         this.lista_produtos.clear();
     }
+    public double aplicarDesconto(double total, Boolean temHistorico){
+        double desconto;
+        if (total>100&&total<250) {
+            desconto = (total *10)/100;
+            return total - desconto;
+        }
+        if (temHistorico == true) {
+            System.out.println("Seu frete é gratuito");
+            // planos para frete 
+        }
+        if (total>=250&&total<300) {
+            desconto = (total*15)/100;
+            return total - desconto;
+        }
+        if (total>=300&&total<500) {
+            desconto = (total*13)/100;
+            return total - desconto;
+        }
+        return total;
+    }
+
 }
