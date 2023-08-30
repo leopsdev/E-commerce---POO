@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.Math;
 
 public class CarrinhoDeCompras{
     private Cliente cliente;
@@ -38,9 +39,10 @@ public class CarrinhoDeCompras{
         for(Produto produto: produtos){
             total += produto.getPreco();
         }
-        boolean tamHistorico = cliente.temHistorico();
-        double ntotal = aplicarDesconto(total,tamHistorico);
-        return ntotal;
+        boolean temHistorico = cliente.temHistorico();
+        total = aplicarDesconto(total,temHistorico);
+        total = aplicarFrete(total, temHistorico);
+        return total;
     }
     public void limparCarrinho(){
         this.lista_produtos.clear();
@@ -50,10 +52,6 @@ public class CarrinhoDeCompras{
         if (total>100&&total<250) {
             desconto = (total *10)/100;
             return total - desconto;
-        }
-        if (temHistorico == true) {
-            System.out.println("Seu frete é gratuito");
-            // planos para frete 
         }
         if (total>=250&&total<300) {
             desconto = (total*15)/100;
@@ -65,5 +63,10 @@ public class CarrinhoDeCompras{
         }
         return total;
     }
-
+    public double aplicarFrete(double total, Boolean temHistorico){
+        if (temHistorico != true) {
+            total += (Math.random()*100);
+        }
+        return total;
+    }
 }
