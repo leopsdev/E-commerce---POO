@@ -3,14 +3,12 @@ import java.util.Scanner;
 
 public class Pagamento {
     private TipoPagamento tipo;
-    private String info;
     private StatusPagamento status_pagamento;
     private LocalDateTime data;
     private Scanner scan = new Scanner(System.in);
 
-    public Pagamento(TipoPagamento tipo, String info) {
+    public Pagamento(TipoPagamento tipo) {
         this.tipo = tipo;
-        this.info = info;
         this.status_pagamento = StatusPagamento.PENDENTE;
         this.data = LocalDateTime.now();
     }
@@ -20,12 +18,6 @@ public class Pagamento {
     }
     public void setTipo(TipoPagamento tipo) {
         this.tipo = tipo;
-    }
-    public String getInfo() {
-        return info;
-    }
-    public void setInfo(String info) {
-        this.info = info;
     }
     public StatusPagamento getStatus() {
         return status_pagamento;
@@ -39,100 +31,58 @@ public class Pagamento {
     public void setData(LocalDateTime data) {
         this.data = data;
     }
-
-    /*public Pedido processarPagamento(Pedido pedido){
-        if(pedido != null){
-            if(tipo == TipoPagamento.CARTAO_CREDITO || tipo == TipoPagamento.CARTAO_DEBITO || tipo == TipoPagamento.PIX || tipo == TipoPagamento.TRANSFERENCIA){
-                status_pagamento = StatusPagamento.CONCLUIDO;
-                pedido.setStatus(StatusPedido.CONCLUIDO);
-            }
-            else{
-                status_pagamento = StatusPagamento.CANCELADO;
-                System.out.println("Não possuímos essa forma de pagamento. Selecione outra ou cancele o pedido.");
-                // Se ele selecionar outra e der certo, okay. Se não,cancela o pedido e fala: pedido cancelado.
-                // Talvez implementar uma validação para o pagamento.
-                pedido.setStatus(StatusPedido.CANCELADO);
-                System.out.println("Pedido cancelado.");
-            }
-            return pedido;
-        }
-        else{
-            System.out.println("Seu pedido não foi realizado.");
-            
-        }
-        return null;
-    }*/
-    public Pedido processarPagamento(Pedido pedido){
-        if(pedido != null){
-            if(this.tipo == TipoPagamento.CARTAO_CREDITO || this.tipo == TipoPagamento.CARTAO_DEBITO || this.tipo == TipoPagamento.PIX || this.tipo == TipoPagamento.TRANSFERENCIA){
-                status_pagamento = StatusPagamento.CONCLUIDO;
-                pedido.setStatus(StatusPedido.CONCLUIDO);
-            }
-            else{
-                int nova_forma = this.novaFormaDePagamento();
-                if(nova_forma == 999 || nova_forma == 5){
-                    this.status_pagamento = StatusPagamento.CANCELADO;
-                    pedido.setStatus(StatusPedido.CANCELADO);
-                    System.out.println("Cancelamento efetuado ao tentar realizar pagamento. Seu pedido foi cancelado com sucesso.");
-                }
-                else{
-                    status_pagamento = StatusPagamento.CONCLUIDO;
-                    pedido.setStatus(StatusPedido.CONCLUIDO);
-                }
-            }
-            return pedido;
-        }
-        else{
-            System.out.println("Seu pedido não foi realizado.");
-            
-        }
-        return null;
-    }
-    private int novaFormaDePagamento(){
-        int nova_forma;
-        System.out.println("Não possuímos essa forma de pagamento. Selecione outra ou cancele o pedido.");
-        System.out.println("Digite [1] para cancelar o pedido;\nDigite [2] para selecionar outra forma de pagamento;");
-        int escolha = scan.nextInt();
-        while(escolha != 1 & escolha != 2){
-            System.out.println("Opção inválida. ");
-            System.out.println("Digite [1] para cancelar o pedido;\nDigite [2] para selecionar outra forma de pagamento;");
-            escolha = scan.nextInt();
-        }
-        if(escolha == 2){
-            System.out.println("=-=-=-=-=-=-=-=-=-=-FORMAS DE PAGAMENTO=-=-=-=-=-=-=-=-=-=-");
-            System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n\n\n");
-            System.out.println("Selecione a nova forma de pagamento:");
-            nova_forma = scan.nextInt();
-            while(nova_forma != 1 & nova_forma != 2 & nova_forma != 3 & nova_forma != 4){
+    public TipoPagamento selecionarFormaPagamento(){
+        int forma;
+        TipoPagamento tipo = TipoPagamento.INDEFINIDO;
+        System.out.println("=-=-=-=-=-=-=-=-=-=-FORMAS DE PAGAMENTO=-=-=-=-=-=-=-=-=-=-");
+        System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n\n\n");
+        System.out.println("Selecione a nova forma de pagamento:");
+        forma = scan.nextInt();
+        while(forma != 1 & forma != 2 & forma != 3 & forma != 4){
                 System.out.println("Opção inválida. Digite uma das opções mostradas.\n");
                 System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n[5] - CANCELAR\n\n");
                 System.out.println("Selecione a nova forma de pagamento:");
-                nova_forma = scan.nextInt();
+                forma = scan.nextInt();
             }
-            switch(nova_forma){
+            switch(forma){
                 case 1:
-                    this.tipo = TipoPagamento.CARTAO_CREDITO;
+                    tipo = TipoPagamento.CARTAO_CREDITO;
                     break;
                 case 2:
-                    this.tipo = TipoPagamento.CARTAO_DEBITO;
+                    tipo = TipoPagamento.CARTAO_DEBITO;
                     break;
                 case 3:
-                    this.tipo = TipoPagamento.PIX;
+                    tipo = TipoPagamento.PIX;
                     break;
                 case 4:
-                    this.tipo = TipoPagamento.TRANSFERENCIA;
+                    tipo = TipoPagamento.TRANSFERENCIA;
                     break;
             }
+            if(forma == 5){
+                return null;
+            }
+            else{
+                return tipo;
+            }
+    }
+    public Pedido processarPagamento(Pedido pedido){
+        TipoPagamento tipo = selecionarFormaPagamento();
+        Pagamento pagamento = new Pagamento(tipo);
+        if(pedido != null){
+            pagamento.setStatus(StatusPagamento.CONCLUIDO);
+            pedido.setStatus(StatusPedido.CONCLUIDO);
+            return pedido;
         }
         else{
-            nova_forma = 999;
+            System.out.println("Pagamento cancelado. Pedido cancelado.");
+            
         }
-        return nova_forma;
+        return null;
     }
 }
 
 enum TipoPagamento{
-    CARTAO_CREDITO, CARTAO_DEBITO, PIX, TRANSFERENCIA;
+    CARTAO_CREDITO, CARTAO_DEBITO, PIX, TRANSFERENCIA, INDEFINIDO;
 }
 
 enum StatusPagamento{

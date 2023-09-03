@@ -29,7 +29,7 @@ public class GerenciadorDeEstoque {
         return validacao;
     }
     public void atualizaEstoque(Pedido pedido){
-        Map<Produto, Integer> lista_produtos = pedido.getCarrinho().getLista_produtos();
+        Map<Produto, Integer> lista_produtos = pedido.getCliente().getCarrinhoDeCompras().getLista_produtos();
         for(Map.Entry<Produto, Integer> par: lista_produtos.entrySet()){
             int quantidade_comprada = par.getValue();
             Produto produto = par.getKey();

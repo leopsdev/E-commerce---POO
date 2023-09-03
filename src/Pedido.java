@@ -4,13 +4,11 @@ public class Pedido {
     private int id;
     private Cliente cliente;        // Ideia: Já que tem cliente, põe pedido. Todo pedido é feito por um cliente a um vendedor.
     private LocalDateTime data;
-    private CarrinhoDeCompras carrinho;     // Ideia: Se eu já recebo o cliente e cada cliente tem um carrinho, é necessário receber o carrinho?
     private StatusPedido status = StatusPedido.PENDENTE;
     private static int proximoID = 1;
 
-    public Pedido(Cliente cliente, CarrinhoDeCompras carrinho) {
+    public Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.carrinho = carrinho;
         this.data = LocalDateTime.now();
         this.id = proximoID;
         proximoID++;
@@ -33,24 +31,18 @@ public class Pedido {
     public Cliente getCliente() {
         return cliente;
     }
-    public CarrinhoDeCompras getCarrinho() {
-        return carrinho;
-    }
-    public void setCarrinho(CarrinhoDeCompras carrinho) {
-        this.carrinho = carrinho;
-    }
     public double getTotalPedido() {
-        return getCarrinho().calculaTotalCompra();
+        return getCliente().getCarrinhoDeCompras().calculaTotalCompra();
     }
 
     public void mostrarPedido(){
-        for(Produto produto: this.carrinho.getProdutos()){
+        for(Produto produto: this.cliente.getCarrinhoDeCompras().getProdutos()){
             System.out.printf("%d - %s -------------------- %lf\n", produto.getId_produto(), produto.getNome(), produto.getPreco());
         }
         System.out.printf("Total: %lf", getTotalPedido());
     }
 
-    public void concluirPedido(){
+    public void realizarPedido(){
         if(status == StatusPedido.PROCESSANDO){
             status = StatusPedido.REALIZADO;
             this.cliente.adicionarAoHistorico(this);

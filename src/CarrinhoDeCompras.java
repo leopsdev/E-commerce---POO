@@ -33,54 +33,6 @@ public class CarrinhoDeCompras{
         return quantidades;
     }
 
-    public void modificarCarrinho(Pedido pedido, Vendedor vendedor){
-        pedido.mostrarPedido();
-        int escolha1 = 0;
-        int escolha2 = 0;
-        int id_removido;
-        int id_alterado;
-        int quant_alterada;
-
-        while(escolha1 != 2){
-            System.out.println("[1] - Adicionar produto\n[2] - Remover produto\n[3] - Alterar quantidade de um produto\n\n");
-            System.out.println("Digite uma das opções acima: ");
-            escolha2 = scan.nextInt();
-            while(escolha2 != 1 & escolha2 != 2){
-                System.out.println("Opção inválida. Digite uma das opções fornecidas: ");
-                escolha2 = scan.nextInt();
-            }
-            switch(escolha2){
-                case 1:
-                    System.out.println("Função em desenvolvimento."); // O vendedor em questão deve mostrar quais os produtos que ele tem.
-                    break;
-                case 2:
-                    System.out.println("Digite o id do produto que deseja remover: ");
-                    id_removido = scan.nextInt();
-                    Produto produto_removido = encontraProdutoNoCarrinho(id_removido);
-                    this.removerProduto(produto_removido);
-                    break;
-                case 3:
-                    System.out.println("Digite o id do produto cuja quantidade em seu carrinho deseja alterar: ");
-                    id_alterado = scan.nextInt();
-                    System.out.println("Digite a nova quantidade deste produto que deseja em seu carrinho: ");
-                    quant_alterada = scan.nextInt();
-
-                    Produto produto_quant_alterada = encontraProdutoNoCarrinho(id_alterado);
-                    boolean verificaDisponibilidade = vendedor.getEstoque().verificaDisponibilidade(produto_quant_alterada, quant_alterada);
-                    while(verificaDisponibilidade == false){
-                        System.out.println("Não temos essa quantidade em estoque. Digite outra quantidade: ");
-                        quant_alterada = scan.nextInt();
-                        verificaDisponibilidade = vendedor.getEstoque().verificaDisponibilidade(produto_quant_alterada, quant_alterada);
-                    }
-                    this.lista_produtos.put(produto_quant_alterada, quant_alterada);
-                    break;
-            }
-            System.out.println("Deseja continuar modificando o carrinho? [1] - Sim; [2] - Não");
-            escolha1 = scan.nextInt();
-        }
-        pedido.setCarrinho(this);
-    }
-
     public Produto encontraProdutoNoCarrinho(int id){
         Produto produto_removido = null;
         produto_removido = this.buscaNoCarrinho(id);

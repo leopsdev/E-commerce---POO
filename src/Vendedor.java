@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 public class Vendedor extends Usuario{
     private long cnpj;
@@ -39,7 +38,7 @@ public class Vendedor extends Usuario{
     public GerenciadorDeEstoque getEstoque(){
         return this.ger_est;
     }
-    public Produto cadastrarProduto1(){
+    public Produto cadastrarProduto(){
         System.out.println("Digite o nome do produto: ");
         String nome = scan.nextLine();
         System.out.println("Digite o preço do produto: ");
@@ -48,10 +47,10 @@ public class Vendedor extends Usuario{
         String descricao = scan.nextLine();
         System.out.println("Digite a categoria do produto: ");
         String categoria = scan.nextLine();
-        Produto produto = new Produto(nome, descricao, preco, categoria);
+        Produto produto = new Produto(nome, descricao, preco, categoria, this);
         return produto;
     }
-    public void cadastrarProduto2(Produto produto){
+    public void modificarProduto(Produto produto){
         System.out.println("Digite o nome do produto: ");
         String nome = scan.nextLine();
         System.out.println("Digite o preço do produto: ");
@@ -70,31 +69,51 @@ public class Vendedor extends Usuario{
     }
 
     public Pedido processarPedido(Pedido pedido){
-        int compra_valida = 0;
         pedido.setStatus(StatusPedido.PROCESSANDO);
-        HashMap<Produto, Integer> falta_produtos = new HashMap<>();
-        for(Map.Entry<Produto, Integer> par: pedido.getCarrinho().getLista_produtos().entrySet()){
-            if(ger_est.verificaDisponibilidade(par.getKey(), par.getValue())){
-                compra_valida++;
-            }
-            else{
-                Produto produto_nao_comprado = par.getKey();
-                int quantidade_faltante = par.getValue() - ger_est.getEstoque().get(produto_nao_comprado);
-                falta_produtos.put(produto_nao_comprado, quantidade_faltante);
-            }
+        this.adicionarListaDePedido(pedido);
+        pedido.realizarPedido();
+        return pedido;
+    }
+
+    public void modificarPedido(Pedido pedido){
+        int tem_certeza = 0;
+        System.out.println("Deseja finalizar o pedido? [1] - Sim; [2] - Não, quero mudar");
+        tem_certeza = scan.nextInt();
+        while(tem_certeza != 1 & tem_certeza != 2){
+            System.out.println("Opção inválida. Selecione uma das opções fornecidas: ");
+            tem_certeza = scan.nextInt();
         }
-        if(compra_valida == pedido.getCarrinho().getLista_produtos().size()){
-            pedido.concluirPedido();
-            return pedido;
-            // Mais alguma coisa
+        if(tem_certeza == 1){
+            pedido.realizarPedido();
+            System.out.println("Pedido realizado. Hora de efetuar o pagamento.");
         }
         else{
-            pedido.cancelarPedido();
-            mostraProdutosFaltantes(falta_produtos);
-            modificacaoPedido(pedido);
+            pedido.getCliente().montarCarrinho();
         }
-        return null; // Só retorna o pedido quando este for REALIZADO, isto é, se passar pela função concluir pedido. Do contrário, retorna null.
     }
+
+    public int selecionarFormaPagamento(){
+        int forma;
+        System.out.println("=-=-=-=-=-=-=-=-=-=-FORMAS DE PAGAMENTO=-=-=-=-=-=-=-=-=-=-");
+        System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n\n\n");
+        System.out.println("Selecione a nova forma de pagamento:");
+        forma = scan.nextInt();
+        while(forma != 1 & forma != 2 & forma != 3 & forma != 4){
+                System.out.println("Opção inválida. Digite uma das opções mostradas.\n");
+                System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n[5] - CANCELAR\n\n");
+                System.out.println("Selecione a nova forma de pagamento:");
+                forma = scan.nextInt();
+            }
+            if(forma == 5){
+                System.out.println("Pagamento cancelado. Pedido cancelado.");
+                return 999;
+                
+            }
+            else{
+                return forma;
+            }
+    }
+
     public void realizaVenda(Pedido pedido){
         if(pedido != null){
             if(pedido.getStatus()==StatusPedido.CONCLUIDO){
@@ -103,30 +122,6 @@ public class Vendedor extends Usuario{
             else{
                 System.out.println("Pagamento não realizado. Até a próxima!");
             }
-        }
-    }
-
-    private void mostraProdutosFaltantes(HashMap<Produto, Integer> falta_produtos){
-        System.out.println("O pedido foi cancelado em decorrência das seguintes faltas no estoque: ");
-        for(Map.Entry<Produto, Integer> falta: falta_produtos.entrySet()){
-                System.out.printf("Produto: %s\nQuantidade em falta: %d\n\n", falta.getKey(), falta.getValue());
-            }
-        System.out.println("Lamentamos pelo contratempo. Modifique sua compra ou cancele-a:");
-    }
-
-    private void modificacaoPedido(Pedido pedido){
-        System.out.println("Digite [1] para modificar seu carrinho de compras;\nDigite [2] para cancelar o pedido;");
-        int decisao = scan.nextInt();
-        while(decisao != 1 & decisao != 2){
-            System.out.println("Opção inválida. Digite uma das opções listadas. ");
-            System.out.println("Digite [1] para modificar seu carrinho de compras;\nDigite [2] para cancelar o pedido;");
-            decisao = scan.nextInt();
-        }
-        if(decisao == 1){
-            pedido.getCarrinho().modificarCarrinho(pedido, this);
-        }
-        else{
-            System.out.println("Cliente optou por não mudar o carrinho e cancelar a compra. Até a próxima.");
         }
     }
 }

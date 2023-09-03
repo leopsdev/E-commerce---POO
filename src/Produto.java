@@ -5,15 +5,16 @@ public class Produto{
   private String descricao;
   private double preco;
   private String categoria;
-  private int quant_estoque;    // Importante na hora de mapear os objetos através de um csv.
+  private Vendedor vendedor;
   private static int proximoID = 1;
 
-  public Produto(final String nome, final String descricao, final double preco, final String categoria){
+  public Produto(final String nome, final String descricao, final double preco, final String categoria, final Vendedor vendedor){
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;
     this.categoria = categoria;
     this.id_produto = proximoID;
+    this.vendedor = vendedor;
     proximoID++;
   }
   public int getId_produto() {
@@ -46,10 +47,10 @@ public class Produto{
   public void setCategoria(final String categoria) {
   	this.categoria = categoria;
   }
-  public int getQuant_estoque() {
-  	return quant_estoque;
+  public Vendedor getVendedor() {
+    return vendedor;
   }
-  public void setQuant_estoque(final int quant_estoque) {
-  	this.quant_estoque = quant_estoque;
+  public void setVendedor(Vendedor vendedor) {
+    this.vendedor = vendedor;
   }
 }
