@@ -1,3 +1,4 @@
+
 public class Produto{
   private int id_produto;
   private String nome;
@@ -7,12 +8,11 @@ public class Produto{
   private int quant_estoque;    // Importante na hora de mapear os objetos através de um csv.
   private static int proximoID = 1;
 
-  public Produto(final String nome, final String descricao, final double preco, final String categoria, final int quant_estoque){
+  public Produto(final String nome, final String descricao, final double preco, final String categoria){
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;
     this.categoria = categoria;
-    this.quant_estoque = quant_estoque;
     this.id_produto = proximoID;
     proximoID++;
   }

@@ -2,41 +2,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Cliente {
-    private int id_cliente;
-    private String nome;
-    private String endereco;     // Criar uma classe ou um método pra coletar direito os dados do endereço
+public class Cliente extends Usuario{
+    private long cpf;
     private String info_pagamento;
     private List<Produto> listaDesejos = new ArrayList<>();
     private List<Pedido> historicoCompras = new ArrayList<>();
     private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-    private static int proximoID = 1;
 
     Scanner scan = new Scanner(System.in);
 
-    public Cliente(String nome, String endereco, String info_pagamento, List<Produto> listaDesejos) {
-        this.nome = nome;
-        this.endereco = endereco;
+    public Cliente(String nome, String endereco, String email, long cpf, String info_pagamento) {
+        super(nome, endereco, email);
         this.info_pagamento = info_pagamento;
-        this.listaDesejos = listaDesejos;
-        this.id_cliente = proximoID;
-        proximoID++;
+        this.cpf = cpf;
     }
-
-    public int getId_cliente() {
-        return id_cliente;
+    public long getCpf() {
+        return cpf;
     }
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public String getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCpf(long cpf) {
+        this.cpf = cpf;
     }
     public String getInfo_pagamento() {
         return info_pagamento;
@@ -47,15 +31,11 @@ public class Cliente {
     public List<Produto> getListaDesejos() {
         return listaDesejos;
     }
-    public void setListaDesejos(List<Produto> listaDesejos) {
-        this.listaDesejos = listaDesejos;
-    }
     public List<Pedido> getHistoricoCompras() {
         return historicoCompras;
     }
-
-    public void setHistoricoCompras(List<Pedido> historicoCompras) {
-        this.historicoCompras = historicoCompras;
+    public CarrinhoDeCompras getCarrinhoDeCompras(){
+        return this.carrinho;
     }
 
     public void adicionarAoCarrinho(Produto produto){
@@ -64,13 +44,28 @@ public class Cliente {
         this.carrinho.adicionarProduto(produto, quantidade);
         
     }
-    public void realizarCompra(Pagamento pagamento){
+    public Pedido fazerPedido(){
         Pedido pedido = new Pedido(this, carrinho);
-        pedido.mostrarPedido(pedido);
-        pagamento.processarPagamento(pedido);
-        historicoCompras.add(pedido);
-        carrinho.limparCarrinho();
-        // Diminuir estoque
+        //pedido.mostrarPedido(pedido);
+        return pedido;
+    }
+    public void realizarCompra(Pagamento pagamento, Vendedor vendedor){
+        Pedido pedido = fazerPedido();
+        vendedor.adicionarListaDePedido(pedido);    
+        Pedido pedido_processado = vendedor.processarPedido(pedido);
+        Pedido pedido_pago = pagamento.processarPagamento(pedido_processado);
+        
+        // Quando o cliente for fazer o pagamento, pergunto quais os dados do pagamento desse cliente pra poder criar a variável do tipo Pagam.
+        
+        boolean verificacao = pedido_pago.verificacaoCompra();
+        if(verificacao){
+            historicoCompras.add(pedido);
+            carrinho.limparCarrinho();
+            vendedor.realizaVenda(pedido_pago);
+        }
+        else{
+            System.out.println("Compra não realizada.");            
+        } 
     }
 
     public void adicionarListaDeDesejos(Produto produto){
@@ -79,6 +74,9 @@ public class Cliente {
 
     public void adicionarAoHistorico(Pedido pedido){
         this.historicoCompras.add(pedido);
+    }
+    public boolean temHistorico(){
+        return !historicoCompras.isEmpty();
     }
     
 }

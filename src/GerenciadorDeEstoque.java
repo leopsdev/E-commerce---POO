@@ -2,18 +2,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GerenciadorDeEstoque {
-    private Map<Produto, Integer> estoque = new HashMap<>();
-
+    private HashMap<Produto, Integer> estoque = new HashMap<>();
+    public GerenciadorDeEstoque(HashMap<Produto, Integer> estoque){
+        this.estoque = estoque;
+    }
+    public HashMap<Produto, Integer> getEstoque(){
+        return this.estoque;
+    }
+    public void setEstoque(HashMap<Produto, Integer> estoque){
+        this.estoque = estoque;
+    }
     public void adicionarProdutoNoEstoque(Produto produto, int quantidade){
         estoque.put(produto, quantidade);
     }
-
-    public int verificaDisponibilidade(Produto produto, int quantidade){
-        int quantidade_em_estoque = estoque.get(produto);
-        int validacao = 0;
+    public boolean verificaDisponibilidade(Produto produto, int quantidade){
+        int quantidade_em_estoque = this.estoque.get(produto);
+        boolean validacao = false;
         if(quantidade > 0){
             if(quantidade < quantidade_em_estoque){
-                validacao = 1;
+                validacao = true;
             }
             else{
                 System.out.println("Produto indisponível em estoque.");

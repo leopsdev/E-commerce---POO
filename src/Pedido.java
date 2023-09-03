@@ -2,9 +2,9 @@ import java.time.LocalDateTime;
 
 public class Pedido {
     private int id;
-    private Cliente cliente;
+    private Cliente cliente;        // Ideia: Já que tem cliente, põe pedido. Todo pedido é feito por um cliente a um vendedor.
     private LocalDateTime data;
-    private CarrinhoDeCompras carrinho;
+    private CarrinhoDeCompras carrinho;     // Ideia: Se eu já recebo o cliente e cada cliente tem um carrinho, é necessário receber o carrinho?
     private StatusPedido status = StatusPedido.PENDENTE;
     private static int proximoID = 1;
 
@@ -43,8 +43,8 @@ public class Pedido {
         return getCarrinho().calculaTotalCompra();
     }
 
-    public void mostrarPedido(Pedido pedido){
-        for(Produto produto: pedido.carrinho.getProdutos()){
+    public void mostrarPedido(){
+        for(Produto produto: this.carrinho.getProdutos()){
             System.out.printf("%d - %s -------------------- %lf\n", produto.getId_produto(), produto.getNome(), produto.getPreco());
         }
         System.out.printf("Total: %lf", getTotalPedido());
@@ -52,7 +52,7 @@ public class Pedido {
 
     public void concluirPedido(){
         if(status == StatusPedido.PROCESSANDO){
-            status = StatusPedido.ENTREGUE;
+            status = StatusPedido.REALIZADO;
             this.cliente.adicionarAoHistorico(this);
         }
     }
@@ -63,11 +63,21 @@ public class Pedido {
         }
     }
 
+    public boolean verificacaoCompra(){
+        if(this.status == StatusPedido.CONCLUIDO){
+            System.out.println("Pedido concluído com sucesso. Seus produtos serão entregues em breve.");
+            return true;
+        }
+        else{
+            System.out.println("Seu pedido foi cancelado na hora do pagamento. Até a próxima.");
+            return false;
+        }
+    }
     
     public void mostrarHistorico(){
         System.out.println("=-=-=-=-=-=-=-=-=-=- Lista de Pedidos =-=-=-=-=--=-==-=-=-");
         for (Pedido pedido: this.cliente.getHistoricoCompras()){
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
             System.out.println("\n");
         }
     }
@@ -75,5 +85,5 @@ public class Pedido {
 }
 
 enum StatusPedido {
-    PENDENTE, PROCESSANDO, ENTREGUE, CANCELADO
+    PENDENTE, PROCESSANDO, REALIZADO, CONCLUIDO, ENTREGUE, CANCELADO
 }
