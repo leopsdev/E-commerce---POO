@@ -1,9 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Scanner;
+=======
+import java.lang.Math;
+>>>>>>> e380111af14bfe19d9e56ebf6a29bec485cf81ce
 
 public class CarrinhoDeCompras{
+    private Cliente cliente;
+
     private Map<Produto, Integer> lista_produtos = new HashMap<>();
     private Scanner scan = new Scanner(System.in);
     public Map<Produto, Integer> getLista_produtos() {
@@ -62,9 +68,34 @@ public class CarrinhoDeCompras{
         for(Produto produto: produtos){
             total += produto.getPreco();
         }
+        boolean temHistorico = cliente.temHistorico();
+        total = aplicarDesconto(total,temHistorico);
+        total = aplicarFrete(total, temHistorico);
         return total;
     }
     public void limparCarrinho(){
         this.lista_produtos.clear();
+    }
+    public double aplicarDesconto(double total, Boolean temHistorico){
+        double desconto;
+        if (total>100&&total<250) {
+            desconto = (total *10)/100;
+            return total - desconto;
+        }
+        if (total>=250&&total<300) {
+            desconto = (total*15)/100;
+            return total - desconto;
+        }
+        if (total>=300&&total<500) {
+            desconto = (total*13)/100;
+            return total - desconto;
+        }
+        return total;
+    }
+    public double aplicarFrete(double total, Boolean temHistorico){
+        if (temHistorico != true) {
+            total += (Math.random()*100);
+        }
+        return total;
     }
 }
