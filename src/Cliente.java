@@ -111,7 +111,7 @@ public class Cliente extends Usuario{
                     break;
             }
             System.out.println("Deseja continuar modificando o carrinho? [1] - Sim; [2] - Não");
-            escolha1 = scan.nextInt();
+            escolha1 = scan.nextInt();  //* */
         }
     }
 
@@ -121,7 +121,7 @@ public class Cliente extends Usuario{
 
         return pedido;
     }
-    public void realizarCompra(Pagamento pagamento, Vendedor vendedor){
+    public void realizarCompra(Pagamento pagamento, Vendedor vendedor){   //* */
         Pedido pedido = fazerPedido();    
         Pedido pedido_processado = vendedor.processarPedido(pedido);
         Pedido pedido_pago = pagamento.processarPagamento(pedido_processado);
@@ -146,12 +146,9 @@ public class Cliente extends Usuario{
     public void adicionarAoHistorico(Pedido pedido){
         this.historicoCompras.add(pedido);
     }
-<<<<<<< HEAD
-    public boolean temHistorico(){
-=======
 
     public Boolean temHistorico(){
->>>>>>> e380111af14bfe19d9e56ebf6a29bec485cf81ce
+
         return !historicoCompras.isEmpty();
     }
     

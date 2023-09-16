@@ -50,7 +50,7 @@ public class Vendedor extends Usuario{
         Produto produto = new Produto(nome, descricao, preco, categoria, this);
         return produto;
     }
-    public void modificarProduto(Produto produto){
+    public void modificarProduto(Produto produto){ //* */
         System.out.println("Digite o nome do produto: ");
         String nome = scan.nextLine();
         System.out.println("Digite o preço do produto: ");
@@ -84,7 +84,7 @@ public class Vendedor extends Usuario{
             tem_certeza = scan.nextInt();
         }
         if(tem_certeza == 1){
-            pedido.realizarPedido();
+            pedido.realizarPedido();    //* */
             System.out.println("Pedido realizado. Hora de efetuar o pagamento.");
         }
         else{
