@@ -42,19 +42,6 @@ public class Pedido {
         System.out.printf("Total: %lf", getTotalPedido());
     }
 
-    public void realizarPedido(){
-        if(status == StatusPedido.PROCESSANDO){
-            status = StatusPedido.REALIZADO;
-            this.cliente.adicionarAoHistorico(this);
-        }
-    }
-
-    public void cancelarPedido(){
-        if(status == StatusPedido.PROCESSANDO){
-            status = StatusPedido.CANCELADO;
-        }
-    }
-
     public boolean verificacaoCompra(){
         if(this.status == StatusPedido.CONCLUIDO){
             System.out.println("Pedido concluído com sucesso. Seus produtos serão entregues em breve.");
@@ -77,5 +64,5 @@ public class Pedido {
 }
 
 enum StatusPedido {
-    PENDENTE, PROCESSANDO, REALIZADO, CONCLUIDO, ENTREGUE, CANCELADO
+    PENDENTE, REALIZADO, CONCLUIDO, ENTREGUE, CANCELADO
 }
