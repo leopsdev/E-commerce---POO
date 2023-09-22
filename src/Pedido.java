@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Pedido {
     private int id;
@@ -32,14 +33,25 @@ public class Pedido {
         return cliente;
     }
     public double getTotalPedido() {
-        return getCliente().getCarrinhoDeCompras().calculaTotalCompra();
+        return calculaTotalCompra();
+    }
+    public double calculaTotalCompra(){
+        ArrayList<Produto> produtos = cliente.getCarrinhoDeCompras().getProdutos();
+        double total = 0;
+        for(Produto produto: produtos){
+            total += produto.getPreco();
+        }
+        boolean temHistorico = cliente.temHistorico();
+        total = cliente.getCarrinhoDeCompras().aplicarDesconto(total,temHistorico);
+        total = cliente.getCarrinhoDeCompras().aplicarFrete(total, temHistorico);
+        return total;
     }
 
     public void mostrarPedido(){
         for(Produto produto: this.cliente.getCarrinhoDeCompras().getProdutos()){
-            System.out.printf("%d - %s -------------------- %lf\n", produto.getId_produto(), produto.getNome(), produto.getPreco());
+            System.out.println(produto.getId_produto()+ " - "+ produto.getNome() + "-------------------- " + produto.getPreco() + "\n");
         }
-        System.out.printf("Total: %lf", getTotalPedido());
+        System.out.println("Total: " + getTotalPedido());
     }
 
     public void realizarPedido(){

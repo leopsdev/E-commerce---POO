@@ -115,7 +115,7 @@ public class Cliente extends Usuario{
         }
     }
 
-    private Pedido fazerPedido(){
+    public Pedido fazerPedido(){
         Pedido pedido = new Pedido(this);
         pedido.mostrarPedido();
 
@@ -146,12 +146,7 @@ public class Cliente extends Usuario{
     public void adicionarAoHistorico(Pedido pedido){
         this.historicoCompras.add(pedido);
     }
-<<<<<<< HEAD
     public boolean temHistorico(){
-=======
-
-    public Boolean temHistorico(){
->>>>>>> e380111af14bfe19d9e56ebf6a29bec485cf81ce
         return !historicoCompras.isEmpty();
     }
     
