@@ -48,6 +48,7 @@ public class Vendedor extends Usuario{
         System.out.println("Digite a categoria do produto: ");
         String categoria = scan.nextLine();
         Produto produto = new Produto(nome, descricao, preco, categoria, this);
+        ger_est.adicionarProdutoNoEstoque(produto, 10);
         return produto;
     }
     public void modificarProduto(Produto produto){

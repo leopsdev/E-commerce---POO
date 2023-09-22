@@ -3,6 +3,7 @@ import java.util.Map;
 
 public class GerenciadorDeEstoque {
     private HashMap<Produto, Integer> estoque = new HashMap<>();
+    
     public GerenciadorDeEstoque(HashMap<Produto, Integer> estoque){
         this.estoque = estoque;
     }

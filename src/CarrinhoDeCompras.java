@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
 import java.util.Scanner;
-=======
-import java.lang.Math;
->>>>>>> e380111af14bfe19d9e56ebf6a29bec485cf81ce
 
 public class CarrinhoDeCompras{
     private Cliente cliente;
@@ -62,17 +58,17 @@ public class CarrinhoDeCompras{
         }
         return produto_removido;
     }
-    public double calculaTotalCompra(){
-        ArrayList<Produto> produtos = getProdutos();
-        double total = 0;
-        for(Produto produto: produtos){
-            total += produto.getPreco();
-        }
-        boolean temHistorico = cliente.temHistorico();
-        total = aplicarDesconto(total,temHistorico);
-        total = aplicarFrete(total, temHistorico);
-        return total;
-    }
+    // public double calculaTotalCompra(){
+    //     ArrayList<Produto> produtos = getProdutos();
+    //     double total = 0;
+    //     for(Produto produto: produtos){
+    //         total += produto.getPreco();
+    //     }
+    //     boolean temHistorico = cliente.temHistorico();
+    //     total = aplicarDesconto(total,temHistorico);
+    //     total = aplicarFrete(total, temHistorico);
+    //     return total;
+    // }
     public void limparCarrinho(){
         this.lista_produtos.clear();
     }
