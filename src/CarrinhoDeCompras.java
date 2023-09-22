@@ -66,14 +66,14 @@ public class CarrinhoDeCompras{
             total += produto.getPreco();
         }
         boolean temHistorico = cliente.temHistorico();
-        total = aplicarDesconto(total,temHistorico);
+        total = aplicarDesconto(total);
         total = aplicarFrete(total, temHistorico);
         return total;
     }
     public void limparCarrinho(){
         this.lista_produtos.clear();
     }
-    public double aplicarDesconto(double total, Boolean temHistorico){
+    public double aplicarDesconto(double total){
         double desconto;
         if (total>100&&total<250) {
             desconto = (total *10)/100;

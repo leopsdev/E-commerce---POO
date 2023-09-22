@@ -47,7 +47,10 @@ public class Vendedor extends Usuario{
         String descricao = scan.nextLine();
         System.out.println("Digite a categoria do produto: ");
         String categoria = scan.nextLine();
+        System.out.println("Digite a quantidade que deseja adicionar: ");
+        int quantidade = scan.nextInt();
         Produto produto = new Produto(nome, descricao, preco, categoria, this);
+        ger_est.adicionarProdutoNoEstoque(produto, quantidade);
         return produto;
     }
     public void modificarProduto(Produto produto){ // Selecionado a partir do click do mouse
