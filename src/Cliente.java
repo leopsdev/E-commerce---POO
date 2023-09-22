@@ -159,12 +159,7 @@ public class Cliente extends Usuario{
     public void adicionarAoHistorico(Pedido pedido){
         this.historicoCompras.add(pedido);
     }
-<<<<<<< HEAD
     public boolean temHistorico(){
-=======
-
-    public Boolean temHistorico(){
->>>>>>> bugfix/user
         return !historicoCompras.isEmpty();
     }
     
