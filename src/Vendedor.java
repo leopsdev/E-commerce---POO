@@ -47,11 +47,14 @@ public class Vendedor extends Usuario{
         String descricao = scan.nextLine();
         System.out.println("Digite a categoria do produto: ");
         String categoria = scan.nextLine();
+        System.out.println("Digite a quantidade que deseja adicionar: ");
+        int quantidade = scan.nextInt();
         Produto produto = new Produto(nome, descricao, preco, categoria, this);
-        ger_est.adicionarProdutoNoEstoque(produto, 10);
+        ger_est.adicionarProdutoNoEstoque(produto, quantidade);
+
         return produto;
     }
-    public void modificarProduto(Produto produto){
+    public void modificarProduto(Produto produto){ // Selecionado a partir do click do mouse
         System.out.println("Digite o nome do produto: ");
         String nome = scan.nextLine();
         System.out.println("Digite o preço do produto: ");
@@ -69,11 +72,9 @@ public class Vendedor extends Usuario{
         lista_pedidos.add(lista_pedidos.size(), pedido);
     }
 
-    public Pedido processarPedido(Pedido pedido){
-        pedido.setStatus(StatusPedido.PROCESSANDO);
-        this.adicionarListaDePedido(pedido);
-        pedido.realizarPedido();
-        return pedido;
+    public void processarPedido(Subpedido subpedido){
+        this.adicionarListaDePedido(subpedido);
+        subpedido.setStatus(StatusPedido.REALIZADO);
     }
 
     public void modificarPedido(Pedido pedido){
@@ -85,7 +86,7 @@ public class Vendedor extends Usuario{
             tem_certeza = scan.nextInt();
         }
         if(tem_certeza == 1){
-            pedido.realizarPedido();
+            pedido.setStatus(StatusPedido.REALIZADO);  
             System.out.println("Pedido realizado. Hora de efetuar o pagamento.");
         }
         else{

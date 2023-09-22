@@ -42,7 +42,7 @@ public class Pedido {
             total += produto.getPreco();
         }
         boolean temHistorico = cliente.temHistorico();
-        total = cliente.getCarrinhoDeCompras().aplicarDesconto(total,temHistorico);
+        total = cliente.getCarrinhoDeCompras().aplicarDesconto(total);
         total = cliente.getCarrinhoDeCompras().aplicarFrete(total, temHistorico);
         return total;
     }
@@ -52,19 +52,6 @@ public class Pedido {
             System.out.println(produto.getId_produto()+ " - "+ produto.getNome() + "-------------------- " + produto.getPreco() + "\n");
         }
         System.out.println("Total: " + getTotalPedido());
-    }
-
-    public void realizarPedido(){
-        if(status == StatusPedido.PROCESSANDO){
-            status = StatusPedido.REALIZADO;
-            this.cliente.adicionarAoHistorico(this);
-        }
-    }
-
-    public void cancelarPedido(){
-        if(status == StatusPedido.PROCESSANDO){
-            status = StatusPedido.CANCELADO;
-        }
     }
 
     public boolean verificacaoCompra(){
@@ -89,5 +76,5 @@ public class Pedido {
 }
 
 enum StatusPedido {
-    PENDENTE, PROCESSANDO, REALIZADO, CONCLUIDO, ENTREGUE, CANCELADO
+    PENDENTE, REALIZADO, CONCLUIDO, ENTREGUE, CANCELADO
 }

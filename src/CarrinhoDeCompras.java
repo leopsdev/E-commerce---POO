@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.lang.Math;
+
 
 public class CarrinhoDeCompras{
-    private Cliente cliente;
 
     private Map<Produto, Integer> lista_produtos = new HashMap<>();
     private Scanner scan = new Scanner(System.in);
@@ -58,21 +59,10 @@ public class CarrinhoDeCompras{
         }
         return produto_removido;
     }
-    // public double calculaTotalCompra(){
-    //     ArrayList<Produto> produtos = getProdutos();
-    //     double total = 0;
-    //     for(Produto produto: produtos){
-    //         total += produto.getPreco();
-    //     }
-    //     boolean temHistorico = cliente.temHistorico();
-    //     total = aplicarDesconto(total,temHistorico);
-    //     total = aplicarFrete(total, temHistorico);
-    //     return total;
-    // }
     public void limparCarrinho(){
         this.lista_produtos.clear();
     }
-    public double aplicarDesconto(double total, Boolean temHistorico){
+    public double aplicarDesconto(double total){
         double desconto;
         if (total>100&&total<250) {
             desconto = (total *10)/100;
