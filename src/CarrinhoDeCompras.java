@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
 import java.util.Scanner;
-=======
-import java.lang.Math;
->>>>>>> e380111af14bfe19d9e56ebf6a29bec485cf81ce
 
 public class CarrinhoDeCompras{
     private Cliente cliente;
