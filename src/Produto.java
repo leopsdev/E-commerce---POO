@@ -1,4 +1,3 @@
-
 public class Produto{
   private int id_produto;
   private String nome;
@@ -6,6 +5,7 @@ public class Produto{
   private double preco;
   private String categoria;
   private Vendedor vendedor;
+  private String caminhoImagem; 
   private static int proximoID = 1;
 
   public Produto(final String nome, final String descricao, final double preco, final String categoria, final Vendedor vendedor){
@@ -52,5 +52,11 @@ public class Produto{
   }
   public void setVendedor(Vendedor vendedor) {
     this.vendedor = vendedor;
+  }
+  public String getCaminhoImagem() {
+    return caminhoImagem;
+  }
+  public void setCaminhoImagem(String caminhoImagem) {
+    this.caminhoImagem = caminhoImagem;
   }
 }

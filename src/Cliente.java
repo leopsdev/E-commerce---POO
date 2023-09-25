@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class Cliente extends Usuario{
     private long cpf;
@@ -8,7 +9,6 @@ public class Cliente extends Usuario{
     private List<Produto> listaDesejos = new ArrayList<>();
     private List<Pedido> historicoCompras = new ArrayList<>();
     private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-
     Scanner scan = new Scanner(System.in);
 
     public Cliente(String nome, String endereco, String email, long cpf, String info_pagamento) {
@@ -115,16 +115,26 @@ public class Cliente extends Usuario{
         }
     }
 
-    private Pedido fazerPedido(){
+    public Pedido fazerPedido(){
         Pedido pedido = new Pedido(this);
         pedido.mostrarPedido();
 
         return pedido;
     }
-    public void realizarCompra(Pagamento pagamento, Vendedor vendedor){
-        Pedido pedido = fazerPedido();    
-        Pedido pedido_processado = vendedor.processarPedido(pedido);
-        Pedido pedido_pago = pagamento.processarPagamento(pedido_processado);
+    public void realizarCompra(Pagamento pagamento){   
+        Pedido pedido = this.fazerPedido();    
+        HashSet<Vendedor>lista_vendedor = new HashSet<>();
+
+        for(Produto produto:this.carrinho.getProdutos()){
+            lista_vendedor.add(produto.getVendedor());
+        }
+
+        for(Vendedor vendedor:lista_vendedor){
+            Subpedido subpedido = new Subpedido(this, vendedor);
+            subpedido.criaSubpedido(this.carrinho.getProdutos(), vendedor);
+            vendedor.processarPedido(subpedido);
+        }
+        Pedido pedido_pago = pagamento.processarPagamento(pedido);
         
         // Quando o cliente for fazer o pagamento, pergunto quais os dados do pagamento desse cliente pra poder criar a variável do tipo Pagam.
         
@@ -132,10 +142,13 @@ public class Cliente extends Usuario{
         if(verificacao){
             historicoCompras.add(pedido);
             carrinho.limparCarrinho();
-            vendedor.realizaVenda(pedido_pago);
+            for(Vendedor vendedor: lista_vendedor){
+                vendedor.realizaVenda(pedido_pago);
+            }
         }
         else{
-            System.out.println("Compra não realizada.");            
+            System.out.println("Compra não realizada.");  
+            pedido.setStatus(StatusPedido.CANCELADO);          
         } 
     }
 
