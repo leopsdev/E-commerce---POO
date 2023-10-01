@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.lang.Math;
-
-
 public class CarrinhoDeCompras{
 
     private Map<Produto, Integer> lista_produtos = new HashMap<>();
@@ -16,7 +13,7 @@ public class CarrinhoDeCompras{
         this.lista_produtos = lista_produtos;
     }
 
-    public void adicionarAoCarrinho(Produto produto){
+    public boolean adicionarAoCarrinho(Produto produto){
         System.out.println("Digite quantas unidades deseja comprar: ");
         int quantidade = scan.nextInt();
         boolean verificaDisponibilidade = produto.getVendedor().getEstoque().verificaDisponibilidade(produto, quantidade);
@@ -43,8 +40,9 @@ public class CarrinhoDeCompras{
             this.lista_produtos.put(produto, quantidade);
         }
         else{
-            System.out.println("Adição cancelada.");
+            System.out.println("Adição cancelada. Pedido não realizado.");
         }
+        return verificaDisponibilidade;
     }
 
     public void removerProduto(Produto produto){

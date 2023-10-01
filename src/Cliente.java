@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.HashSet;
 
 public class Cliente extends Usuario{
     private long cpf;
@@ -29,34 +28,26 @@ public class Cliente extends Usuario{
         return this.carrinho;
     }
 
-    public Pedido fazerPedido(){
+    public GerenciadorDePedidos fazerPedido(){
         Pedido pedido = new Pedido(this);
+        GerenciadorDePedidos ger_pedido = new GerenciadorDePedidos(pedido);
+        ger_pedido.organizaPedidos();
         pedido.mostrarPedido();
 
-        return pedido;
+        return ger_pedido;
     }
-    public void realizarCompra(Pagamento pagamento){   
-        Pedido pedido = this.fazerPedido();    
-        HashSet<Vendedor>lista_vendedor = new HashSet<>();
+    public void realizarCompra(){
+        GerenciadorDePedidos ger_ped = this.fazerPedido();
+        Pedido pedido = ger_ped.getPedido();    
 
-        for(Produto produto:this.carrinho.getProdutos()){
-            lista_vendedor.add(produto.getVendedor());
-        }
-
-        for(Vendedor vendedor:lista_vendedor){
-            Subpedido subpedido = new Subpedido(this, vendedor);
-            subpedido.criaSubpedido(this.carrinho.getProdutos(), vendedor);
-            vendedor.processarPedido(subpedido);
-        }
+        Pagamento pagamento = new Pagamento();
         Pedido pedido_pago = pagamento.processarPagamento(pedido);
-        
-        // Quando o cliente for fazer o pagamento, pergunto quais os dados do pagamento desse cliente pra poder criar a variável do tipo Pagam.
         
         boolean verificacao = pedido_pago.verificacaoCompra();
         if(verificacao){
             historicoCompras.add(pedido);
             carrinho.limparCarrinho();
-            for(Vendedor vendedor: lista_vendedor){
+            for(Vendedor vendedor: ger_ped.getLista_vendedores()){
                 vendedor.realizaVenda(pedido_pago);
             }
         }

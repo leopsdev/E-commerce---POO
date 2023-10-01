@@ -61,11 +61,7 @@ public class Vendedor extends Usuario{
     }
     public void adicionarListaDePedido(Pedido pedido){
         lista_pedidos.add(lista_pedidos.size(), pedido);
-    }
-
-    public void processarPedido(Subpedido subpedido){
-        this.adicionarListaDePedido(subpedido);
-        subpedido.setStatus(StatusPedido.REALIZADO);
+        pedido.setStatus(StatusPedido.REALIZADO);
     }
 
     public void realizaVenda(Pedido pedido){
