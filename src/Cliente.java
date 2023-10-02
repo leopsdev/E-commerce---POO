@@ -7,9 +7,13 @@ public class Cliente extends Usuario{
     private List<Produto> listaDesejos = new ArrayList<>();
     private List<Pedido> historicoCompras = new ArrayList<>();
     private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+    private int id;
+    private int id_prox = 1;
     Scanner scan = new Scanner(System.in);
     public Cliente(String nome, String endereco, String email, String senha, long cpf) {
         super(nome, endereco, email, senha);
+        this.id = id_prox;
+        id_prox++;
         this.cpf = cpf;
     }
     public long getCpf() {
@@ -26,6 +30,12 @@ public class Cliente extends Usuario{
     }
     public CarrinhoDeCompras getCarrinhoDeCompras(){
         return this.carrinho;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public GerenciadorDePedidos fazerPedido(){

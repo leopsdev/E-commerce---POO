@@ -7,12 +7,16 @@ public class Vendedor extends Usuario{
     private HashMap<Produto, Integer> estoque = new HashMap<>();
     private GerenciadorDeEstoque ger_est = new GerenciadorDeEstoque(estoque);
     private ArrayList<Pedido> lista_pedidos = new ArrayList<>();
+    private int id;
+    private int id_prox = 1;
     Scanner scan = new Scanner(System.in);
 
     public Vendedor(String nome, String endereco, String email, String senha, long cnpj, String descricao_empresa) {
         super(nome, endereco, email, senha);
         this.cnpj = cnpj;
         this.descricao_empresa = descricao_empresa;
+        this.id = id_prox;
+        id_prox++;
     }
     public long getCnpj() {
         return cnpj;
@@ -28,6 +32,12 @@ public class Vendedor extends Usuario{
     }
     public GerenciadorDeEstoque getEstoque(){
         return this.ger_est;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
     public Produto cadastrarProduto(){
         System.out.println("Digite o nome do produto: ");
