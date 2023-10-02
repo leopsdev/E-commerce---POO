@@ -5,11 +5,11 @@ import dao.Conexao;
 public class App {
     public static void main(String[] args) throws Exception {
         
-        Vendedor vend1 = new Vendedor("Caixa.com","caixas.com","caixacom@gmail.com",01,"Caixas.com","Loja de caixas");
+        Vendedor vend1 = new Vendedor("nome","nome.com","nome@gmail.com","4002",4002,"nome, um nome pra ti");
 
         Produto prod1 = vend1.cadastrarProduto();
 
-        Cliente cliente1 = new Cliente("teste1","Triangulo das Bermudas","leopereiraesilca@gmail.com",40020322,"null");
+        Cliente cliente1 = new Cliente("teste1","rua teste, avenida teste","teste@gmail.com","123teste",40028922);
 
         Connection conexao = new Conexao().getConnection();
         UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
@@ -18,7 +18,7 @@ public class App {
 
         cliente1.adicionarListaDeDesejos(prod1);
 
-        cliente1.adicionarAoCarrinho(prod1, vend1);
+        cliente1.getCarrinhoDeCompras().adicionarAoCarrinho(prod1);
         
         conexao.close();
     }

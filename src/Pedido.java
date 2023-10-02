@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Pedido {
     private int id;
-    private Cliente cliente;        // Ideia: Já que tem cliente, põe pedido. Todo pedido é feito por um cliente a um vendedor.
+    private Cliente cliente;
     private LocalDateTime data;
     private StatusPedido status = StatusPedido.PENDENTE;
     private static int proximoID = 1;
@@ -41,9 +41,6 @@ public class Pedido {
         for(Produto produto: produtos){
             total += produto.getPreco();
         }
-        boolean temHistorico = cliente.temHistorico();
-        total = cliente.getCarrinhoDeCompras().aplicarDesconto(total);
-        total = cliente.getCarrinhoDeCompras().aplicarFrete(total, temHistorico);
         return total;
     }
 
@@ -64,13 +61,30 @@ public class Pedido {
             return false;
         }
     }
-    
-    public void mostrarHistorico(){
-        System.out.println("=-=-=-=-=-=-=-=-=-=- Lista de Pedidos =-=-=-=-=--=-==-=-=-");
-        for (Pedido pedido: this.cliente.getHistoricoCompras()){
-            pedido.mostrarPedido();
-            System.out.println("\n");
+
+    public double aplicarDesconto(){
+        double total = aplicarFrete();
+        double desconto;
+        if (total>100&&total<250) {
+            desconto = (total *10)/100;
+            return total - desconto;
         }
+        if (total>=250&&total<300) {
+            desconto = (total*15)/100;
+            return total - desconto;
+        }
+        if (total>=300&&total<500) {
+            desconto = (total*13)/100;
+            return total - desconto;
+        }
+        return total;
+    }
+    public double aplicarFrete(){
+        double total = calculaTotalCompra();
+        if (cliente.temHistorico()) {
+            total += (Math.random()*100);
+        }
+        return total;
     }
     
 }

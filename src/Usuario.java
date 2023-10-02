@@ -5,10 +5,11 @@ abstract class Usuario {
     private String senha;
     private static int proximoID = 1;
     
-    public Usuario(String nome, String endereco, String email) {
+    public Usuario(String nome, String endereco, String email, String senha) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
+        this.senha = senha;
     }
     public String getNome() {
         return nome;
@@ -40,4 +41,5 @@ abstract class Usuario {
     public static void setProximoID(int proximoID) {
         Usuario.proximoID = proximoID;
     }
+    
 }
