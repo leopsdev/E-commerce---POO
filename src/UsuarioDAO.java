@@ -12,7 +12,7 @@ public class UsuarioDAO {
     }
 
     public void insertCliente(Cliente cliente) throws SQLException{
-        String sql = "insert into usuario(email,senha,nome,cpf,endereco,info_pagamento) values(?,?,?,?,?,?);";
+        String sql = "insert into usuario(email,senha,nome,cpf,endereco) values(?,?,?,?,?);";
 
         PreparedStatement statement = conection.prepareStatement(sql);
         statement.setString(1, cliente.getEmail());
@@ -20,20 +20,21 @@ public class UsuarioDAO {
         statement.setString(3, cliente.getNome());
         statement.setLong(4, cliente.getCpf());
         statement.setString(5, cliente.getEndereco());
-        statement.setString(6, cliente.getInfo_pagamento());
         statement.execute();
         
     }
 
     /* preciso reformular */
     public void insertVendedor(Vendedor vendedor) throws SQLException{
-        String sql = "insert into usuario(email,senha,nome,cpf) values(?,?,?,?);";
+        String sql = "insert into vendedor(email,senha,nome_loja,cnpj,descricao_empresa,endereco) values(?,?,?,?,?,?);";
 
         PreparedStatement statement = conection.prepareStatement(sql);
         statement.setString(1, vendedor.getEmail());
         statement.setString(2, vendedor.getSenha());
         statement.setString(3, vendedor.getNome());
         statement.setLong(4, vendedor.getCnpj());
+        statement.setString(5, vendedor.getDescricao_empresa());
+        statement.setString(6, vendedor.getEndereco());
         statement.execute();
         
     }
@@ -83,12 +84,11 @@ public class UsuarioDAO {
             //int id = results.getInt("id");
             String nome = results.getString("nome");
             String email = results.getString("email");
-            //String senha = results.getString("senha"); Há necessidade de mostrar a senha?
+            String senha = results.getString("senha");
             int cpf = results.getInt("cpf");
             String endereco = results.getString("endereco");
-            String info_pagamento = results.getString("info_pagamento");
 
-            Cliente clienteDoBancoDB = new Cliente(nome,endereco,email,cpf,info_pagamento);
+            Cliente clienteDoBancoDB = new Cliente(nome,endereco,email,senha,cpf);
             clientes.add(clienteDoBancoDB);
         }
 
