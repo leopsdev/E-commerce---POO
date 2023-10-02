@@ -7,9 +7,9 @@ public class Pagamento {
     private LocalDateTime data;
     private Scanner scan = new Scanner(System.in);
 
-    public Pagamento(TipoPagamento tipo) {
-        this.tipo = tipo;
+    public Pagamento() {
         this.status_pagamento = StatusPagamento.PENDENTE;
+        this.tipo = TipoPagamento.INDEFINIDO;
         this.data = LocalDateTime.now();
     }
     
@@ -33,7 +33,6 @@ public class Pagamento {
     }
     public TipoPagamento selecionarFormaPagamento(){
         int forma;
-        TipoPagamento tipo = TipoPagamento.INDEFINIDO;
         System.out.println("=-=-=-=-=-=-=-=-=-=-FORMAS DE PAGAMENTO=-=-=-=-=-=-=-=-=-=-");
         System.out.println("[1] - CRÉDITO.\n[2] - DÉBITO\n[3] - PIX\n[4] - TRANSFERÊNCIA\n\n\n");
         System.out.println("Selecione a nova forma de pagamento:");
@@ -67,9 +66,9 @@ public class Pagamento {
     }
     public Pedido processarPagamento(Pedido pedido){
         TipoPagamento tipo = selecionarFormaPagamento();
-        Pagamento pagamento = new Pagamento(tipo);
+        this.setTipo(tipo);
         if(pedido != null){
-            pagamento.setStatus(StatusPagamento.CONCLUIDO);
+            this.setStatus(StatusPagamento.CONCLUIDO);
             pedido.setStatus(StatusPedido.CONCLUIDO);
             return pedido;
         }

@@ -18,7 +18,10 @@ public class App {
 
         cliente1.adicionarListaDeDesejos(prod1);
 
-        cliente1.getCarrinhoDeCompras().adicionarAoCarrinho(prod1);
+        boolean verificacao = cliente1.getCarrinhoDeCompras().adicionarAoCarrinho(prod1);
+        if(verificacao){
+            cliente1.realizarCompra();
+        }
         
         conexao.close();
     }
