@@ -9,6 +9,7 @@ public class Cliente extends Usuario{
     private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private int id;
     Scanner scan = new Scanner(System.in);
+    
     public Cliente(String nome, String endereco, String email, String senha, long cpf) {
         super(nome, endereco, email, senha);
         this.cpf = cpf;

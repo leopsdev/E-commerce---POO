@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+
 public class CarrinhoDeCompras{
 
     private Map<Produto, Integer> lista_produtos = new HashMap<>();
