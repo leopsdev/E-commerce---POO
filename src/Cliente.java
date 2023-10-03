@@ -8,13 +8,10 @@ public class Cliente extends Usuario{
     private List<Pedido> historicoCompras = new ArrayList<>();
     private CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     private int id;
-    private int id_prox = 1;
     Scanner scan = new Scanner(System.in);
     
     public Cliente(String nome, String endereco, String email, String senha, long cpf) {
         super(nome, endereco, email, senha);
-        this.id = id_prox;
-        id_prox++;
         this.cpf = cpf;
     }
     public long getCpf() {
