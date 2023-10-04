@@ -1,21 +1,20 @@
 import java.sql.Connection;
 
-import dao.Conexao;
-
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Vendedor vend1 = new Vendedor("nome2","nome.com","nome@gmail.com","4002",4002,"nome, um nome pra ti");
+        Vendedor vend1 = new Vendedor("nome5","nome.com","nome@gmail.com","4002",4002,"nome, um nome pra ti");
 
         //Produto prod1 = vend1.cadastrarProduto();
 
-        Cliente cliente1 = new Cliente("teste6","rua teste, avenida teste","teste@gmail.com","123teste",40028922);
+        Cliente cliente1 = new Cliente("teste13","rua teste, avenida teste","teste@gmail.com","123teste",40028922);
 
         Connection conexao = new Conexao().getConnection();
-        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        ClienteDAO clienteDAO = new ClienteDAO(conexao);
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
 
-        // usuarioDao.insertCliente(cliente1);
-        // usuarioDao.insertVendedor(vend1);
+        // ClienteDAO.insertCliente(cliente1);
+        // vendedorDAO.insertVendedor(vend1);
         
         // System.out.println("Contas Clientes:");
         // for (Cliente atual : usuarioDao.selectAllCliente()) {
