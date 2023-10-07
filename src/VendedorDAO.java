@@ -36,6 +36,16 @@ public class VendedorDAO{
         return foo.get(0).getId();
     }
 
+    public Vendedor selectPorCNPJ(int cnpj) throws SQLException{
+        String cnpjString = String.valueOf(cnpj);
+        String sql = "select * from vendedor where cnpj = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, cnpjString);
+        ArrayList<Vendedor> foo = pesquisaVendedor(statement);
+
+        return foo.get(0);
+    }
+
     public boolean existeVendedor(Vendedor vendedor) throws SQLException{
         String sql = "select * from vendedor where email = ? and senha = ?;";
         PreparedStatement statement = conection.prepareStatement(sql);
@@ -64,8 +74,6 @@ public class VendedorDAO{
         statement.setInt(1, vendedor.getId());
         statement.execute();
     }
-
-    
 
     public ArrayList<Vendedor> selectAllVendedor() throws SQLException{
         String sql = "select * from vendedor;";
