@@ -6,6 +6,10 @@ public class Vendedor extends Usuario{
     private String descricao_empresa;
     private HashMap<Produto, Integer> estoque = new HashMap<>();
     private GerenciadorDeEstoque ger_est = new GerenciadorDeEstoque(estoque);
+    public GerenciadorDeEstoque getGer_est() {
+        return ger_est;
+    }
+
     private ArrayList<Pedido> lista_pedidos = new ArrayList<>();
     private int id;
     Scanner scan = new Scanner(System.in);
@@ -42,9 +46,9 @@ public class Vendedor extends Usuario{
         System.out.println("Digite o preço do produto: ");
         double preco = scan.nextDouble();
         System.out.println("Digite a descrição do produto: ");
-        String descricao = scan.nextLine();
+        String descricao = "Sem descrição";
         System.out.println("Digite a categoria do produto: ");
-        String categoria = scan.nextLine();
+        String categoria = "Teste";
         System.out.println("Digite a quantidade que deseja adicionar: ");
         int quantidade = scan.nextInt();
         Produto produto = new Produto(nome, descricao, preco, categoria, this);
