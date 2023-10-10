@@ -26,6 +26,26 @@ public class ProdutoDAO {
         produto.setId_produto(idTabelaProduto(produto));
     }
 
+    public ArrayList<Produto> buscaNomeProduto(String nome) throws SQLException{
+        String sql = "select * from produtos where nome = ?;";
+
+        PreparedStatement statement = conection.prepareStatement(sql);
+
+        statement.setString(1,nome);
+
+        return pesquisaProduto(statement);
+    }
+
+    public ArrayList<Produto> buscaCategoriaProduto(String categoria) throws SQLException{
+        String sql = "select * from produtos where categoria = ?;";
+
+        PreparedStatement statement = conection.prepareStatement(sql);
+
+        statement.setString(1,categoria);
+
+        return pesquisaProduto(statement);
+    }
+
     public int idTabelaProduto(Produto produto) throws SQLException{
         String sql = "select * from produtos where nome = ? and cnpj = ?;";
         
