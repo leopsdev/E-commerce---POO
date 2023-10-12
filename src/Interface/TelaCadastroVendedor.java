@@ -50,6 +50,8 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
         txtEndereco = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -136,7 +138,7 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel7.setText("Endereço:");
+        jLabel7.setText("Endere�o:");
 
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +266,7 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
         vendedorDAO.insertVendedor(vendedor);
 
         TelaPrincipal telaPrincipal = new TelaPrincipal();
+        this.dispose();
         telaPrincipal.setVisible(true);
 
     }//GEN-LAST:event_btnCadastroVendedorActionPerformed

@@ -50,6 +50,8 @@ public class TelaEntrada extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -101,7 +103,7 @@ public class TelaEntrada extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel4.setText("Ainda não possui uma conta? Realize cadastro como:");
+        jLabel4.setText("Ainda n�o possui uma conta? Realize cadastro como:");
 
         btnEntrar.setBackground(new java.awt.Color(0, 35, 100));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -241,6 +243,7 @@ public class TelaEntrada extends javax.swing.JFrame {
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
         // TODO add your handling code here:
         TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente();
+        this.dispose();
         telaCadastroCliente.setVisible(true);
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
@@ -255,6 +258,7 @@ public class TelaEntrada extends javax.swing.JFrame {
 
         if (clienteDAO.existeCliente(email,senha)==true) {
             TelaPrincipal telaPrincipal = new TelaPrincipal();
+            this.dispose();
             telaPrincipal.setVisible(true);
         } else{
             if (vendedorDAO.existeVendedor(email, senha)==true) {
@@ -272,6 +276,7 @@ public class TelaEntrada extends javax.swing.JFrame {
     private void btnCadastrarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVendedorActionPerformed
         // TODO add your handling code here:
         TelaCadastroVendedor telaCadastroVendedor = new TelaCadastroVendedor();
+        this.dispose();
         telaCadastroVendedor.setVisible(true);
     }//GEN-LAST:event_btnCadastrarVendedorActionPerformed
 
