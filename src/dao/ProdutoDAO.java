@@ -15,6 +15,13 @@ public class ProdutoDAO {
         this.conection = conection;
     }
 
+    public ArrayList<Produto> selectAllProdutos() throws SQLException{
+        String sql = "select * from produtos;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+
+        return pesquisaProduto(statement);
+    }
+
     public void insertProduto(Produto produto) throws SQLException{
         String sql = "insert into produtos(nome,descricao,preco,categoria,cnpj,quantidade) values(?,?,?,?,?,?);";
 

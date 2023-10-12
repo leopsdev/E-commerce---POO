@@ -4,6 +4,8 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author frerp
@@ -90,7 +92,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         btnEntrar.setText("Cadastrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
+                try {
+                    btnEntrarActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -159,7 +166,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
