@@ -1,5 +1,11 @@
+package controller;
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import model.Pedido;
+import model.Produto;
+import model.Subpedido;
+import model.Vendedor;
 
 public class GerenciadorDePedidos {
     private Pedido pedido;

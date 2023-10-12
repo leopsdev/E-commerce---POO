@@ -1,6 +1,9 @@
+package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import controller.GerenciadorDeEstoque;
 public class Vendedor extends Usuario{
     private long cnpj;
     private String descricao_empresa;

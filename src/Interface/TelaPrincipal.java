@@ -4,6 +4,15 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import dao.Conexao;
+import dao.ProdutoDAO;
+import dao.VendedorDAO;
+import model.Produto;
+
 /**
  *
  * @author frerp
@@ -42,12 +51,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessários", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jComboBox1ActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                try {
+                    jTextField1ActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -109,9 +133,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        String pesquisa = jTextField1.getText();
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        List<Produto> produtosPesquisados = produtoDAO.buscaNomeProduto(pesquisa);
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        Object selected = jComboBox1.getSelectedItem();
+        
+        if(selected != null){
+            String itemSelecionado = selected.toString();
+            Connection conexao = new Conexao().getConnection();
+            ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+            List<Produto> produtosCategorizados = produtoDAO.buscaCategoriaProduto(itemSelecionado);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

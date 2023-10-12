@@ -1,3 +1,4 @@
+package model;
 abstract class Usuario {
     private String nome;
     private String endereco;

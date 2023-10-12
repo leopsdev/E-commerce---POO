@@ -4,6 +4,13 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import dao.ClienteDAO;
+import dao.Conexao;
+import model.Cliente;
+
 /**
  *
  * @author frerp
@@ -24,7 +31,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()  {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -98,7 +105,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         btnCadastroCliente.setText("Cadastrar");
         btnCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroClienteActionPerformed(evt);
+                try {
+                    btnCadastroClienteActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -236,13 +248,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
-    private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
+    private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnCadastroClienteActionPerformed
         // TODO add your handling code here:
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
         String endereco = txtEndereco.getText();
+        Integer cpf_long = Integer.parseInt(cpf);
+
+        Cliente cliente = new Cliente(nome,endereco,email,senha,cpf_long);
+        
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clienteDAO = new ClienteDAO(conexao);
+        clienteDAO.insertCliente(cliente);
+
         TelaPrincipal telaPrincipal = new TelaPrincipal();
         telaPrincipal.setVisible(true);
     }//GEN-LAST:event_btnCadastroClienteActionPerformed

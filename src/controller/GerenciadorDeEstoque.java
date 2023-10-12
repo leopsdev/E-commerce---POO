@@ -1,5 +1,9 @@
+package controller;
 import java.util.HashMap;
 import java.util.Map;
+
+import model.Pedido;
+import model.Produto;
 
 public class GerenciadorDeEstoque {
     private HashMap<Produto, Integer> estoque = new HashMap<>();

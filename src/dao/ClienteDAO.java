@@ -1,8 +1,11 @@
+package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import model.Cliente;
 
 public class ClienteDAO{
     private Connection conection;
@@ -42,11 +45,11 @@ public class ClienteDAO{
         statement.execute();
     }
 
-    public boolean existeCliente(Cliente cliente) throws SQLException{
+    public boolean existeCliente(String email, String senha) throws SQLException{
         String sql = "select * from usuario where email = ? and senha = ?;";
         PreparedStatement statement = conection.prepareStatement(sql);
-        statement.setString(1, cliente.getEmail());
-        statement.setString(2, cliente.getSenha());
+        statement.setString(1, email);
+        statement.setString(2, senha);
         statement.execute();
         
         ResultSet result = statement.getResultSet();

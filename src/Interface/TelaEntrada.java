@@ -4,6 +4,15 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import dao.ClienteDAO;
+import dao.Conexao;
+import dao.VendedorDAO;
+
 /**
  *
  * @author frerp
@@ -100,7 +109,12 @@ public class TelaEntrada extends javax.swing.JFrame {
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
+                try {
+                    btnEntrarActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -230,12 +244,29 @@ public class TelaEntrada extends javax.swing.JFrame {
         telaCadastroCliente.setVisible(true);
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+
+        Connection conexao = new Conexao().getConnection();
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
+        ClienteDAO clienteDAO = new ClienteDAO(conexao);
+
+        if (clienteDAO.existeCliente(email,senha)==true) {
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.setVisible(true);
+        } else{
+            if (vendedorDAO.existeVendedor(email, senha)==true) {
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                telaPrincipal.setVisible(true);
+            } else{
+                JOptionPane.showMessageDialog(null, "Conta inexistente!");
+            }
+        }
+
+        
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVendedorActionPerformed
@@ -274,6 +305,7 @@ public class TelaEntrada extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new TelaEntrada().setVisible(true);
             }
         });

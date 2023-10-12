@@ -4,6 +4,13 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import dao.Conexao;
+import dao.VendedorDAO;
+import model.Vendedor;
+
 /**
  *
  * @author frerp
@@ -98,7 +105,12 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
         btnCadastroVendedor.setText("Cadastrar");
         btnCadastroVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroVendedorActionPerformed(evt);
+                try {
+                    btnCadastroVendedorActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -236,15 +248,24 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
-    private void btnCadastroVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroVendedorActionPerformed
+    private void btnCadastroVendedorActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnCadastroVendedorActionPerformed
         // TODO add your handling code here:
         String nome = txtNome.getText();
         String cnpj = txtCnpj.getText();
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
         String endereco = txtEndereco.getText();
+        Integer cnpj_long = Integer.parseInt(cnpj);
+        
+
+        Vendedor vendedor = new Vendedor(nome,endereco,email,senha,cnpj_long,"null");
+        Connection conexao = new Conexao().getConnection();
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
+        vendedorDAO.insertVendedor(vendedor);
+
         TelaPrincipal telaPrincipal = new TelaPrincipal();
         telaPrincipal.setVisible(true);
+
     }//GEN-LAST:event_btnCadastroVendedorActionPerformed
 
     /**

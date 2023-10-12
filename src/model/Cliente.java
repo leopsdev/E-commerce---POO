@@ -1,6 +1,9 @@
+package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import controller.GerenciadorDePedidos;
 
 public class Cliente extends Usuario{
     private long cpf;
