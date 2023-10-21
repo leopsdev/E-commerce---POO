@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabalhopoo;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author frerp
@@ -33,6 +35,8 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         lblFoto = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,39 +56,65 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
         jLabel6.setText("jLabel6");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlFundo.setBackground(new java.awt.Color(204, 204, 255));
 
         pnlAbaLateral.setBackground(new java.awt.Color(0, 35, 100));
 
         lblFoto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFoto.setForeground(new java.awt.Color(204, 204, 255));
         lblFoto.setText("Foto Perfil");
 
         jButton5.setBackground(new java.awt.Color(153, 153, 255));
         jButton5.setForeground(new java.awt.Color(0, 35, 100));
         jButton5.setText("Lista de desejos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(153, 153, 255));
         jButton6.setForeground(new java.awt.Color(0, 35, 100));
         jButton6.setText("Carrinho de compras");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setBackground(new java.awt.Color(153, 153, 255));
+        jButton9.setForeground(new java.awt.Color(0, 35, 100));
+        jButton9.setText("Histórico de pedidos");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("Sair");
 
         javax.swing.GroupLayout pnlAbaLateralLayout = new javax.swing.GroupLayout(pnlAbaLateral);
         pnlAbaLateral.setLayout(pnlAbaLateralLayout);
         pnlAbaLateralLayout.setHorizontalGroup(
             pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAbaLateralLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAbaLateralLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblFoto)
                 .addGap(96, 96, 96))
+            .addGroup(pnlAbaLateralLayout.createSequentialGroup()
+                .addGroup(pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAbaLateralLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnlAbaLateralLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton10)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         pnlAbaLateralLayout.setVerticalGroup(
             pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +125,11 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                 .addComponent(jButton6)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(20, 20, 20))
         );
 
         jLabel1.setBackground(new java.awt.Color(0, 35, 100));
@@ -163,7 +197,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                         .addComponent(jButton8)
                         .addGap(20, 20, 20))
                     .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(70, 70, 70)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addGroup(pnlFundoLayout.createSequentialGroup()
@@ -191,7 +225,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton3)))))
-                        .addGap(0, 177, Short.MAX_VALUE))))
+                        .addGap(0, 207, Short.MAX_VALUE))))
         );
         pnlFundoLayout.setVerticalGroup(
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,6 +292,24 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        TelaCarrinhoDeCompras telaCarrinhoDeCompras = new TelaCarrinhoDeCompras();
+        telaCarrinhoDeCompras.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        telaCarrinhoDeCompras.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        TelaListaDeDesejos telaListaDeDesejos = new TelaListaDeDesejos();
+        telaListaDeDesejos.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        telaListaDeDesejos.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,7 +321,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -295,6 +347,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -302,6 +355,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
