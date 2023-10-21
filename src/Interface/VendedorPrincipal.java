@@ -4,17 +4,38 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import dao.Conexao;
+import dao.ProdutoDAO;
+import model.Produto;
+import model.Vendedor;
+
 /**
  *
  * @author leope
  */
 public class VendedorPrincipal extends javax.swing.JFrame {
+    public ArrayList<Produto> produtos;
+    private static Vendedor vendedor;
 
     /**
      * Creates new form VendedorPrincipal
+     * @throws SQLException
      */
-    public VendedorPrincipal() {
+    public VendedorPrincipal(Vendedor vendedor) throws SQLException {
         initComponents();
+        this.vendedor = vendedor;
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        this.produtos = produtoDAO.selectProdutoVendedor(vendedor.getCnpj());
+
+        readJtable();
     }
 
     /**
@@ -30,13 +51,15 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        Perfil = new javax.swing.JButton();
         jScrollBar2 = new javax.swing.JScrollBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutos = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         addProd = new javax.swing.JButton();
         editProd = new javax.swing.JButton();
+        visuEntregas = new javax.swing.JButton();
+        attTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,10 +69,15 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 35, 100));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessários", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                try {
+                    jComboBox1ActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -58,14 +86,21 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                try {
+                    jTextField1ActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(0, 102, 204));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Perfil");
+        Perfil.setText("Perfil");
+        Perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -76,18 +111,18 @@ public class VendedorPrincipal extends javax.swing.JFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(401, 401, 401))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Perfil)
+                .addGap(374, 374, 374))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(Perfil))
                 .addGap(20, 20, 20))
         );
 
@@ -96,11 +131,11 @@ public class VendedorPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Descrição", "Preço", "Categoria", "Quantidade"
+                "id", "Nome", "Descri��o", "Pre�o", "Categoria", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -124,7 +159,31 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         editProd.setText("Editar Produto");
         editProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editProdActionPerformed(evt);
+                try {
+                    editProdActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        visuEntregas.setText("Visualizar e Atualizar Pedidos");
+        visuEntregas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuEntregasActionPerformed(evt);
+            }
+        });
+
+        attTabela.setText("Atualizar Tabela");
+        attTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    attTabelaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -135,6 +194,8 @@ public class VendedorPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(attTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(visuEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -146,7 +207,11 @@ public class VendedorPrincipal extends javax.swing.JFrame {
                 .addComponent(addProd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(editProd)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(visuEntregas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(attTabela)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -159,7 +224,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(354, 354, 354)
+                .addGap(386, 386, 386)
                 .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -195,7 +260,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
         String pesquisa = jTextField1.getText();
         Connection conexao = new Conexao().getConnection();
@@ -210,7 +275,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tabelaProdutosComponentAdded
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         Object selected = jComboBox1.getSelectedItem();
 
@@ -224,13 +289,41 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void editProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProdActionPerformed
-        // TODO add your handling code here:
+    private void editProdActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_editProdActionPerformed
+        String id_str = JOptionPane.showInputDialog("Digite o id do produto: ");
+        int id = Integer.parseInt(id_str);
+
+        String quant_str = JOptionPane.showInputDialog("Digite a quantidade a se adicionar: ");
+        int quant = Integer.parseInt(quant_str);
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        Produto prod = produtoDAO.selectProdutoId(id).get(0);
+
+        produtoDAO.addQuanProduto(prod, quant);
+        readJtable();
     }//GEN-LAST:event_editProdActionPerformed
 
     private void addProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProdActionPerformed
-        // TODO add your handling code here:
+        AddProduto telaAddProduto = new AddProduto(vendedor);
+        telaAddProduto.setVisible(true); 
     }//GEN-LAST:event_addProdActionPerformed
+
+    private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
+        PerfilVendedor telaPerfilVendedor = new PerfilVendedor();
+        telaPerfilVendedor.setVisible(true);
+    }//GEN-LAST:event_PerfilActionPerformed
+
+    private void visuEntregasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuEntregasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visuEntregasActionPerformed
+
+    private void attTabelaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_attTabelaActionPerformed
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        ArrayList<Produto> produtosCategorizados = produtoDAO.selectProdutoVendedor(vendedor.getCnpj());
+        this.produtos = produtosCategorizados;
+        readJtable();
+    }//GEN-LAST:event_attTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,16 +355,37 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VendedorPrincipal().setVisible(true);
+                try {
+                    new VendedorPrincipal(vendedor).setVisible(true);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
+        });
+    }
+    public void readJtable(){
+        DefaultTableModel model = (DefaultTableModel) tabelaProdutos.getModel();
+        model.setRowCount(0);
+        //ArrayList<Produto> listaProdutos = produtos;
+        produtos.forEach(produto -> {
+            model.addRow(new Object[]{
+                produto.getId_produto(),
+                produto.getNome(),
+                produto.getDescricao(),
+                produto.getPreco(),
+                produto.getCategoria(),
+                produto.getQuant()
+            });
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Perfil;
     private javax.swing.JButton addProd;
+    private javax.swing.JButton attTabela;
     private javax.swing.JButton editProd;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -279,5 +393,6 @@ public class VendedorPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabelaProdutos;
+    private javax.swing.JButton visuEntregas;
     // End of variables declaration//GEN-END:variables
 }

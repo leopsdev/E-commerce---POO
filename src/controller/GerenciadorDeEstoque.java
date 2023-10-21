@@ -1,7 +1,11 @@
 package controller;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import dao.Conexao;
+import dao.ProdutoDAO;
 import model.Pedido;
 import model.Produto;
 
@@ -22,6 +26,21 @@ public class GerenciadorDeEstoque {
     }
     public boolean verificaDisponibilidade(Produto produto, int quantidade){
         int quantidade_em_estoque = this.estoque.get(produto);
+        boolean validacao = false;
+        if(quantidade > 0){
+            if(quantidade < quantidade_em_estoque){
+                validacao = true;
+            }
+            else{
+                System.out.println("Produto indisponível em estoque.");
+            }
+        }
+        return validacao;
+    }
+    public boolean verificaDisponibilidade2(Produto produto, int quantidade) throws SQLException{
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        int quantidade_em_estoque = produtoDAO.quantEmEstoque(produto.getId_produto());
         boolean validacao = false;
         if(quantidade > 0){
             if(quantidade < quantidade_em_estoque){

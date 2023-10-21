@@ -7,16 +7,14 @@ public class Produto{
   private String categoria;
   private Vendedor vendedor;
   private String caminhoImagem; 
-  private static int proximoID = 1;
+  private int quant;
 
   public Produto(final String nome, final String descricao, final double preco, final String categoria, final Vendedor vendedor){
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;
     this.categoria = categoria;
-    this.id_produto = proximoID;
     this.vendedor = vendedor;
-    proximoID++;
   }
   public int getId_produto() {
   	return id_produto;
@@ -29,6 +27,12 @@ public class Produto{
   }
   public void setNome(final String nome) {
   	this.nome = nome;
+  }
+  public int getQuant() {
+    return quant;
+  }
+  public void setQuant(int quant) {
+    this.quant = quant;
   }
   public String getDescricao() {
   	return descricao;
