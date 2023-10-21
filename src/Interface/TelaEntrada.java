@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import dao.ClienteDAO;
 import dao.Conexao;
 import dao.VendedorDAO;
+import model.Vendedor;
 
 /**
  *
@@ -262,8 +263,9 @@ public class TelaEntrada extends javax.swing.JFrame {
             telaPrincipal.setVisible(true);
         } else{
             if (vendedorDAO.existeVendedor(email, senha)==true) {
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.setVisible(true);
+                Vendedor vend = vendedorDAO.selectPorEmailSenha(email, senha);
+                VendedorPrincipal telaVendedor = new VendedorPrincipal(vend);
+                telaVendedor.setVisible(true);
             } else{
                 JOptionPane.showMessageDialog(null, "Conta inexistente!");
             }

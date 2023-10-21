@@ -59,6 +59,21 @@ public class Vendedor extends Usuario{
 
         return produto;
     }
+    public Produto cadastrarProduto2(String nome, String descricao, double preco, String categoria, int quantidade){
+        
+        Produto produto = new Produto(nome, descricao, preco, categoria, this);
+        ger_est.adicionarProdutoNoEstoque(produto, quantidade);
+
+        return produto;
+    }
+
+    public void modificarProduto2(Produto produto, String nome, String categoria, double preco, String descricao){ 
+        produto.setNome(nome);
+        produto.setPreco(preco);
+        produto.setCategoria(categoria);
+        produto.setDescricao(descricao);
+    }
+
     public void modificarProduto(Produto produto){ 
         System.out.println("Digite o nome do produto: ");
         String nome = scan.nextLine();

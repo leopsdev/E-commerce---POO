@@ -48,6 +48,15 @@ public class VendedorDAO{
 
         return foo.get(0);
     }
+    public Vendedor selectPorEmailSenha(String email, String senha) throws SQLException{
+        String sql = "select * from vendedor where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, senha);
+        ArrayList<Vendedor> foo = pesquisaVendedor(statement);
+
+        return foo.get(0);
+    }
 
     public boolean existeVendedor(String email, String senha) throws SQLException{
         String sql = "select * from vendedor where email = ? and senha = ?;";

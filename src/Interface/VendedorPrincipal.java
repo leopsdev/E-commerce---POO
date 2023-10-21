@@ -6,30 +6,34 @@ package Interface;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import dao.Conexao;
 import dao.ProdutoDAO;
-import java.util.ArrayList;
-
-import javax.swing.table.DefaultTableModel;
 import model.Produto;
+import model.Vendedor;
 
 /**
  *
- * @author frerp
+ * @author leope
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class VendedorPrincipal extends javax.swing.JFrame {
     public ArrayList<Produto> produtos;
+    private static Vendedor vendedor;
 
     /**
-     * Creates new form TelaPrincipal
+     * Creates new form VendedorPrincipal
      * @throws SQLException
      */
-    public TelaPrincipal() throws SQLException {
+    public VendedorPrincipal(Vendedor vendedor) throws SQLException {
         initComponents();
+        this.vendedor = vendedor;
         Connection conexao = new Conexao().getConnection();
         ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
-        this.produtos = produtoDAO.selectAllProdutos();
+        this.produtos = produtoDAO.selectProdutoVendedor(vendedor.getCnpj());
 
         readJtable();
     }
@@ -47,16 +51,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Perfil = new javax.swing.JButton();
         jScrollBar2 = new javax.swing.JScrollBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutos = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        addProd = new javax.swing.JButton();
+        editProd = new javax.swing.JButton();
+        visuEntregas = new javax.swing.JButton();
+        attTabela = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("FRALD - comprar sem se preocupar");
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -64,7 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 35, 100));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessàrios", "bebês e maternidade", "bolsas e malas", "beleza e saude", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informástica", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -90,15 +95,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(0, 102, 204));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Carrinho de Compras");
-
-        jLabel2.setBackground(new java.awt.Color(0, 102, 204));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Perfil");
+        Perfil.setText("Perfil");
+        Perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,22 +110,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addGap(401, 401, 401))
+                .addComponent(Perfil)
+                .addGap(374, 374, 374))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(Perfil))
                 .addGap(20, 20, 20))
         );
 
@@ -132,11 +131,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Descrição", "Preço", "Categoria", "Quantidade"
+                "id", "Nome", "Descri��o", "Pre�o", "Categoria", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,6 +149,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaProdutos);
 
+        addProd.setText("Adicionar Produto");
+        addProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProdActionPerformed(evt);
+            }
+        });
+
+        editProd.setText("Editar Produto");
+        editProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    editProdActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        visuEntregas.setText("Visualizar e Atualizar Pedidos");
+        visuEntregas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visuEntregasActionPerformed(evt);
+            }
+        });
+
+        attTabela.setText("Atualizar Tabela");
+        attTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    attTabelaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(attTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(visuEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(addProd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editProd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(visuEntregas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(attTabela)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,8 +221,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(376, 376, 376)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(386, 386, 386)
                 .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,7 +237,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(58, 58, 58))
         );
 
@@ -202,10 +270,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         readJtable();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void tabelaProdutosComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tabelaProdutosComponentAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tabelaProdutosComponentAdded
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         Object selected = jComboBox1.getSelectedItem();
-        
+
         if(selected != null){
             String itemSelecionado = selected.toString();
             Connection conexao = new Conexao().getConnection();
@@ -216,24 +289,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    public void readJtable(){
-        DefaultTableModel model = (DefaultTableModel) tabelaProdutos.getModel();
-        model.setRowCount(0);
-        //ArrayList<Produto> listaProdutos = produtos;
-        produtos.forEach(produto -> {
-            model.addRow(new Object[]{
-                produto.getNome(),
-                produto.getDescricao(),
-                produto.getPreco(),
-                produto.getCategoria(),
-                produto.getPreco()
-            });
-        });
-    }
-    private void tabelaProdutosComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tabelaProdutosComponentAdded
+    private void editProdActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_editProdActionPerformed
+        String id_str = JOptionPane.showInputDialog("Digite o id do produto: ");
+        int id = Integer.parseInt(id_str);
+
+        String quant_str = JOptionPane.showInputDialog("Digite a quantidade a se adicionar: ");
+        int quant = Integer.parseInt(quant_str);
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        Produto prod = produtoDAO.selectProdutoId(id).get(0);
+
+        produtoDAO.addQuanProduto(prod, quant);
+        readJtable();
+    }//GEN-LAST:event_editProdActionPerformed
+
+    private void addProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProdActionPerformed
+        AddProduto telaAddProduto = new AddProduto(vendedor);
+        telaAddProduto.setVisible(true); 
+    }//GEN-LAST:event_addProdActionPerformed
+
+    private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
+        PerfilVendedor telaPerfilVendedor = new PerfilVendedor();
+        telaPerfilVendedor.setVisible(true);
+    }//GEN-LAST:event_PerfilActionPerformed
+
+    private void visuEntregasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuEntregasActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tabelaProdutosComponentAdded
+    }//GEN-LAST:event_visuEntregasActionPerformed
+
+    private void attTabelaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_attTabelaActionPerformed
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        ArrayList<Produto> produtosCategorizados = produtoDAO.selectProdutoVendedor(vendedor.getCnpj());
+        this.produtos = produtosCategorizados;
+        readJtable();
+    }//GEN-LAST:event_attTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,13 +342,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -266,7 +356,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new TelaPrincipal().setVisible(true);
+                    new VendedorPrincipal(vendedor).setVisible(true);
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -274,16 +364,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    public void readJtable(){
+        DefaultTableModel model = (DefaultTableModel) tabelaProdutos.getModel();
+        model.setRowCount(0);
+        //ArrayList<Produto> listaProdutos = produtos;
+        produtos.forEach(produto -> {
+            model.addRow(new Object[]{
+                produto.getId_produto(),
+                produto.getNome(),
+                produto.getDescricao(),
+                produto.getPreco(),
+                produto.getCategoria(),
+                produto.getQuant()
+            });
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Perfil;
+    private javax.swing.JButton addProd;
+    private javax.swing.JButton attTabela;
+    private javax.swing.JButton editProd;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabelaProdutos;
+    private javax.swing.JButton visuEntregas;
     // End of variables declaration//GEN-END:variables
 }
