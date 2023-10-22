@@ -142,6 +142,7 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:    
 
         TelaPrincipal tela = new TelaPrincipal();
+        
         tela.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

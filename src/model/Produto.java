@@ -16,6 +16,9 @@ public class Produto{
     this.categoria = categoria;
     this.vendedor = vendedor;
   }
+  public Produto(final String nome){
+    this.nome = nome;
+  }
   public int getId_produto() {
   	return id_produto;
   }

@@ -2,21 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.trabalhopoo;
+package Interface;
 
 import javax.swing.JFrame;
+
+import model.Cliente;
 
 /**
  *
  * @author frerp
  */
 public class TelaPerfilCliente extends javax.swing.JFrame {
+    private Cliente cliente;
+
 
     /**
      * Creates new form TelaPerfilCliente
      */
-    public TelaPerfilCliente() {
+    public TelaPerfilCliente(Cliente cliente) {
         initComponents();
+        this.cliente = cliente;
+        nomeCliente.setText(cliente.getNome());
+        emailCliente.setText(cliente.getEmail());
+        senhaCliente.setText(cliente.getSenha());
+        endeCliente.setText(cliente.getEndereco());
     }
 
     /**
@@ -41,22 +50,24 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        nomeCliente = new javax.swing.JTextField();
+        emailCliente = new javax.swing.JTextField();
+        senhaCliente = new javax.swing.JTextField();
+        endeCliente = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        voltarTelaPrincipal = new javax.swing.JButton();
 
         jButton7.setText("jButton7");
 
         jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
         pnlFundo.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -86,7 +97,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(153, 153, 255));
         jButton9.setForeground(new java.awt.Color(0, 35, 100));
-        jButton9.setText("Histórico de pedidos");
+        jButton9.setText("Hist�rico de pedidos");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -143,11 +154,12 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
 
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel4.setText("Endereço:");
+        jLabel4.setText("Endere�o:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        
+        emailCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                emailClienteActionPerformed(evt);
             }
         });
 
@@ -159,6 +171,11 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         });
 
         jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +193,12 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel5.setText("Informações de usuário");
+        jLabel5.setText("Informa��es de usu�rio");
 
-        jButton8.setText("Voltar a comprar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        voltarTelaPrincipal.setText("Voltar a comprar");
+        voltarTelaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                voltarTelaPrincipalActionPerformed(evt);
             }
         });
 
@@ -194,12 +211,14 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8)
+                        .addComponent(voltarTelaPrincipal)
                         .addGap(20, 20, 20))
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
+                            .addGroup(pnlFundoLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(29, 29, 29))
                             .addGroup(pnlFundoLayout.createSequentialGroup()
                                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
@@ -209,51 +228,45 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                                         .addComponent(jLabel2)))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1))
-                                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2))
-                                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4))
-                                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3)))))
-                        .addGap(0, 207, Short.MAX_VALUE))))
+                                    .addComponent(nomeCliente)
+                                    .addComponent(emailCliente)
+                                    .addComponent(senhaCliente)
+                                    .addComponent(endeCliente))))
+                        .addGap(12, 12, 12)
+                        .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton4)
+                            .addComponent(jButton3))
+                        .addGap(94, 94, 94))))
         );
         pnlFundoLayout.setVerticalGroup(
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlAbaLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlFundoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton8)
+                .addComponent(voltarTelaPrincipal)
                 .addGap(98, 98, 98)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(60, 113, Short.MAX_VALUE))
         );
@@ -272,9 +285,9 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void emailClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailClienteActionPerformed
+        emailCliente.setText(cliente.getEmail());
+    }//GEN-LAST:event_emailClienteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -288,9 +301,9 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void voltarTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaPrincipalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_voltarTelaPrincipalActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -309,6 +322,10 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         telaListaDeDesejos.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaListaDeDesejos.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,12 +357,14 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPerfilCliente().setVisible(true);
+                new TelaPerfilCliente(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField emailCliente;
+    private javax.swing.JTextField endeCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -354,7 +373,6 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -362,12 +380,11 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblFoto;
+    private javax.swing.JTextField nomeCliente;
     private javax.swing.JPanel pnlAbaLateral;
     private javax.swing.JPanel pnlFundo;
+    private javax.swing.JTextField senhaCliente;
+    private javax.swing.JButton voltarTelaPrincipal;
     // End of variables declaration//GEN-END:variables
 }

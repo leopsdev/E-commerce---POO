@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Cliente;
+import model.Vendedor;
 
 public class ClienteDAO{
     private Connection conection;
@@ -55,6 +56,16 @@ public class ClienteDAO{
         ResultSet result = statement.getResultSet();
 
         return result.next();
+    }
+
+    public Cliente selectPorEmailSenha(String email, String senha) throws SQLException{
+        String sql = "select * from usuario where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, senha);
+        ArrayList<Cliente> foo = pesquisaCliente(statement);
+
+        return foo.get(0);
     }
 
     public int idTabelaCliente(Cliente cliente) throws SQLException{

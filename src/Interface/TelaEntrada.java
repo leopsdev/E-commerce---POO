@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import dao.ClienteDAO;
 import dao.Conexao;
 import dao.VendedorDAO;
+import model.Cliente;
 import model.Vendedor;
 
 /**
@@ -258,7 +259,9 @@ public class TelaEntrada extends javax.swing.JFrame {
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
 
         if (clienteDAO.existeCliente(email,senha)==true) {
-            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            Cliente cliente = clienteDAO.selectPorEmailSenha(email, senha);
+            TelaPrincipal_4 telaPrincipal = new TelaPrincipal_4(cliente);
+
             this.dispose();
             telaPrincipal.setVisible(true);
         } else{

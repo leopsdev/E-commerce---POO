@@ -266,7 +266,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         clienteDAO.insertCliente(cliente);
 
         TelaPrincipal telaPrincipal = new TelaPrincipal();
+        
+        
         this.dispose();
+
         telaPrincipal.setVisible(true);
     }//GEN-LAST:event_btnCadastroClienteActionPerformed
 

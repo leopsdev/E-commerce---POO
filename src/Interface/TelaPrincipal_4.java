@@ -2,21 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.trabalhopoo;
+package Interface;
 
+import dao.Conexao;
+import dao.ProdutoDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import model.Cliente;
+import model.Produto;
+import model.Vendedor;
 
 /**
  *
  * @author frerp
  */
 public class TelaPrincipal_4 extends javax.swing.JFrame {
-
+    public ArrayList<Produto> produtos;
+    public ArrayList<JLabel> labels;
+    private Cliente cliente;
+    
+    
     /**
      * Creates new form TelaPrincipal_4
+     * @throws SQLException
      */
-    public TelaPrincipal_4() {
+    public TelaPrincipal_4(Cliente cliente) throws SQLException {
         initComponents();
+        this.cliente = cliente;
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        this.labels = constroiLabels();
+        limpaLabels();
+        this.produtos = produtoDAO.selectAllProdutos();
+
+        preexer();
+        
     }
 
     /**
@@ -30,132 +54,150 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        selectCategoria = new javax.swing.JComboBox<>();
+        pesquisarPorNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        perfilBotao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel15 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        primeiroLabel = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        segunda = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        terceiro = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        quarto = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        quinta = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        sexta = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        setima = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        oitava = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        nona = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
+        decima = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
+        onze = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        doze = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        treze = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
+        quatorze = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        quinze = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        dezeis = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
+        dezessete = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
+        dezoito = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
+        dezenove = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
+        vinte = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
+        vinteum = new javax.swing.JLabel();
         jPanel31 = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        vintedois = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
+        vintetres = new javax.swing.JLabel();
         jPanel33 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
+        vintequatro = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
+        vintecinco = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
+        vinteseis = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
+        vintesete = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
+        vinteoito = new javax.swing.JLabel();
         jPanel38 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
+        vintenove = new javax.swing.JLabel();
         jPanel39 = new javax.swing.JPanel();
-        jLabel36 = new javax.swing.JLabel();
+        trinta = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
+        trintaone = new javax.swing.JLabel();
         jPanel41 = new javax.swing.JPanel();
-        jLabel38 = new javax.swing.JLabel();
+        trintadois = new javax.swing.JLabel();
         jPanel42 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
+        trintatres = new javax.swing.JLabel();
         jPanel43 = new javax.swing.JPanel();
-        jLabel40 = new javax.swing.JLabel();
+        trintaquatro = new javax.swing.JLabel();
         jPanel44 = new javax.swing.JPanel();
-        jLabel41 = new javax.swing.JLabel();
+        trintacinco = new javax.swing.JLabel();
         jPanel45 = new javax.swing.JPanel();
-        jLabel42 = new javax.swing.JLabel();
+        trintaseis = new javax.swing.JLabel();
         jPanel46 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
+        trintasete = new javax.swing.JLabel();
         jPanel47 = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
+        trintaoito = new javax.swing.JLabel();
         jPanel48 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
+        trintanove = new javax.swing.JLabel();
         jPanel49 = new javax.swing.JPanel();
-        jLabel46 = new javax.swing.JLabel();
+        quarenta = new javax.swing.JLabel();
         jPanel50 = new javax.swing.JPanel();
-        jLabel47 = new javax.swing.JLabel();
+        quarentaum = new javax.swing.JLabel();
         jPanel52 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
+        quarentadois = new javax.swing.JLabel();
         jPanel53 = new javax.swing.JPanel();
-        jLabel50 = new javax.swing.JLabel();
+        quarentatres = new javax.swing.JLabel();
         jPanel51 = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
+        quarentaquatro = new javax.swing.JLabel();
         jPanel54 = new javax.swing.JPanel();
-        jLabel51 = new javax.swing.JLabel();
+        quarentacinco = new javax.swing.JLabel();
         jPanel55 = new javax.swing.JPanel();
-        jLabel52 = new javax.swing.JLabel();
+        quarentaseis = new javax.swing.JLabel();
         jPanel56 = new javax.swing.JPanel();
-        jLabel53 = new javax.swing.JLabel();
+        quarentasete = new javax.swing.JLabel();
         jPanel57 = new javax.swing.JPanel();
-        jLabel54 = new javax.swing.JLabel();
+        quarentaoito = new javax.swing.JLabel();
         jPanel58 = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
+        quarentanove = new javax.swing.JLabel();
         jPanel59 = new javax.swing.JPanel();
-        jLabel56 = new javax.swing.JLabel();
+        cinquenta = new javax.swing.JLabel();
         jPanel60 = new javax.swing.JPanel();
-        jLabel57 = new javax.swing.JLabel();
+        cinquentaum = new javax.swing.JLabel();
         jPanel61 = new javax.swing.JPanel();
-        jLabel58 = new javax.swing.JLabel();
+        cinquentadois = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1350, 1080));
 
         jPanel2.setBackground(new java.awt.Color(0, 35, 100));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessários", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        selectCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        selectCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
+        selectCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                try {
+                    selectCategoriaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        pesquisarPorNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pesquisarPorNome.setText("Pesquisar");
+        pesquisarPorNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        pesquisarPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    pesquisarPorNomeActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -167,11 +209,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel2.setText("Perfil");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        perfilBotao.setForeground(new java.awt.Color(204, 204, 255));
+        perfilBotao.setText("Perfil");
+        perfilBotao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                perfilBotaoMouseClicked(evt);
             }
         });
 
@@ -181,13 +223,13 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 477, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pesquisarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(perfilBotao)
                 .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
@@ -195,10 +237,10 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquisarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(perfilBotao))
                 .addGap(20, 20, 20))
         );
 
@@ -214,7 +256,12 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("jLabel3");
+        primeiroLabel.setText("default");
+        primeiroLabel.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                primeiroLabelComponentAdded(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -222,20 +269,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(primeiroLabel)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(primeiroLabel)
                 .addContainerGap())
         );
 
         jPanel8.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel6.setText("jLabel3");
+        segunda.setText("default");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -243,20 +290,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(segunda)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(segunda)
                 .addContainerGap())
         );
 
         jPanel9.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel7.setText("jLabel3");
+        terceiro.setText("default");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -264,20 +311,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(terceiro)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(terceiro)
                 .addContainerGap())
         );
 
         jPanel10.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel8.setText("jLabel3");
+        quarto.setText("default");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -285,20 +332,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarto)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addComponent(quarto)
                 .addContainerGap())
         );
 
         jPanel11.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel9.setText("jLabel3");
+        quinta.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -306,20 +353,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quinta)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(quinta)
                 .addContainerGap())
         );
 
         jPanel12.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel10.setText("jLabel3");
+        sexta.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -327,20 +374,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(sexta)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel10)
+                .addComponent(sexta)
                 .addContainerGap())
         );
 
         jPanel13.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel11.setText("jLabel3");
+        setima.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -348,20 +395,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(setima)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel11)
+                .addComponent(setima)
                 .addContainerGap())
         );
 
         jPanel14.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel12.setText("jLabel3");
+        oitava.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -369,20 +416,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(oitava)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(oitava)
                 .addContainerGap())
         );
 
         jPanel17.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel14.setText("jLabel3");
+        nona.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -390,20 +437,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(nona)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel14)
+                .addComponent(nona)
                 .addContainerGap())
         );
 
         jPanel21.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel18.setText("jLabel3");
+        decima.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -411,20 +458,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(decima)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel18)
+                .addComponent(decima)
                 .addContainerGap())
         );
 
         jPanel18.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel15.setText("jLabel3");
+        onze.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -432,20 +479,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(onze)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel15)
+                .addComponent(onze)
                 .addContainerGap())
         );
 
         jPanel19.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel16.setText("jLabel3");
+        doze.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -453,20 +500,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(doze)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel16)
+                .addComponent(doze)
                 .addContainerGap())
         );
 
         jPanel16.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel13.setText("jLabel3");
+        treze.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -474,20 +521,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(treze)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel13)
+                .addComponent(treze)
                 .addContainerGap())
         );
 
         jPanel20.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel17.setText("jLabel3");
+        quatorze.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -495,20 +542,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quatorze)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel17)
+                .addComponent(quatorze)
                 .addContainerGap())
         );
 
         jPanel22.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel19.setText("jLabel3");
+        quinze.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -516,20 +563,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quinze)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel19)
+                .addComponent(quinze)
                 .addContainerGap())
         );
 
         jPanel23.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel20.setText("jLabel3");
+        dezeis.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -537,20 +584,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(dezeis)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel20)
+                .addComponent(dezeis)
                 .addContainerGap())
         );
 
         jPanel28.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel25.setText("jLabel3");
+        dezessete.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -558,20 +605,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel25)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(dezessete)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel25)
+                .addComponent(dezessete)
                 .addContainerGap())
         );
 
         jPanel27.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel24.setText("jLabel3");
+        dezoito.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -579,20 +626,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(dezoito)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel24)
+                .addComponent(dezoito)
                 .addContainerGap())
         );
 
         jPanel29.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel26.setText("jLabel3");
+        dezenove.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -600,20 +647,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel26)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(dezenove)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel26)
+                .addComponent(dezenove)
                 .addContainerGap())
         );
 
         jPanel26.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel23.setText("jLabel3");
+        vinte.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -621,20 +668,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vinte)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel23)
+                .addComponent(vinte)
                 .addContainerGap())
         );
 
         jPanel30.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel27.setText("jLabel3");
+        vinteum.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -642,20 +689,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel27)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vinteum)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel27)
+                .addComponent(vinteum)
                 .addContainerGap())
         );
 
         jPanel31.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel28.setText("jLabel3");
+        vintedois.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -663,20 +710,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel28)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintedois)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel28)
+                .addComponent(vintedois)
                 .addContainerGap())
         );
 
         jPanel32.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel29.setText("jLabel3");
+        vintetres.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -684,20 +731,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel29)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintetres)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel29)
+                .addComponent(vintetres)
                 .addContainerGap())
         );
 
         jPanel33.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel30.setText("jLabel3");
+        vintequatro.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
@@ -705,20 +752,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel30)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintequatro)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel30)
+                .addComponent(vintequatro)
                 .addContainerGap())
         );
 
         jPanel34.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel31.setText("jLabel3");
+        vintecinco.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -726,20 +773,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel31)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintecinco)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel31)
+                .addComponent(vintecinco)
                 .addContainerGap())
         );
 
         jPanel35.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel32.setText("jLabel3");
+        vinteseis.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -747,20 +794,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel32)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vinteseis)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel32)
+                .addComponent(vinteseis)
                 .addContainerGap())
         );
 
         jPanel36.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel33.setText("jLabel3");
+        vintesete.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -768,20 +815,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel33)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintesete)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel33)
+                .addComponent(vintesete)
                 .addContainerGap())
         );
 
         jPanel37.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel34.setText("jLabel3");
+        vinteoito.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -789,20 +836,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel34)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vinteoito)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel34)
+                .addComponent(vinteoito)
                 .addContainerGap())
         );
 
         jPanel38.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel35.setText("jLabel3");
+        vintenove.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -810,20 +857,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel35)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(vintenove)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel35)
+                .addComponent(vintenove)
                 .addContainerGap())
         );
 
         jPanel39.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel36.setText("jLabel3");
+        trinta.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
@@ -831,20 +878,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel36)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trinta)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel36)
+                .addComponent(trinta)
                 .addContainerGap())
         );
 
         jPanel40.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel37.setText("jLabel3");
+        trintaone.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
         jPanel40.setLayout(jPanel40Layout);
@@ -852,20 +899,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel37)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintaone)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel37)
+                .addComponent(trintaone)
                 .addContainerGap())
         );
 
         jPanel41.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel38.setText("jLabel3");
+        trintadois.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
@@ -873,20 +920,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel38)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintadois)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel41Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel38)
+                .addComponent(trintadois)
                 .addContainerGap())
         );
 
         jPanel42.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel39.setText("jLabel3");
+        trintatres.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
         jPanel42.setLayout(jPanel42Layout);
@@ -894,20 +941,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel42Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel39)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintatres)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel42Layout.setVerticalGroup(
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel42Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel39)
+                .addComponent(trintatres)
                 .addContainerGap())
         );
 
         jPanel43.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel40.setText("jLabel3");
+        trintaquatro.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
         jPanel43.setLayout(jPanel43Layout);
@@ -915,20 +962,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel43Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel40)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintaquatro)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel40)
+                .addComponent(trintaquatro)
                 .addContainerGap())
         );
 
         jPanel44.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel41.setText("jLabel3");
+        trintacinco.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
@@ -936,20 +983,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel41)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintacinco)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel41)
+                .addComponent(trintacinco)
                 .addContainerGap())
         );
 
         jPanel45.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel42.setText("jLabel3");
+        trintaseis.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
         jPanel45.setLayout(jPanel45Layout);
@@ -957,20 +1004,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel45Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel42)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintaseis)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel45Layout.setVerticalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel45Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel42)
+                .addComponent(trintaseis)
                 .addContainerGap())
         );
 
         jPanel46.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel43.setText("jLabel3");
+        trintasete.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
         jPanel46.setLayout(jPanel46Layout);
@@ -978,20 +1025,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel46Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel43)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintasete)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel46Layout.setVerticalGroup(
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel46Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel43)
+                .addComponent(trintasete)
                 .addContainerGap())
         );
 
         jPanel47.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel44.setText("jLabel3");
+        trintaoito.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
@@ -999,20 +1046,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel47Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel44)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintaoito)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel47Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel44)
+                .addComponent(trintaoito)
                 .addContainerGap())
         );
 
         jPanel48.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel45.setText("jLabel3");
+        trintanove.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
         jPanel48.setLayout(jPanel48Layout);
@@ -1020,20 +1067,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel48Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel45)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(trintanove)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel48Layout.setVerticalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel45)
+                .addComponent(trintanove)
                 .addContainerGap())
         );
 
         jPanel49.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel46.setText("jLabel3");
+        quarenta.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
         jPanel49.setLayout(jPanel49Layout);
@@ -1041,20 +1088,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel49Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel46)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarenta)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel49Layout.setVerticalGroup(
             jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel49Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel46)
+                .addComponent(quarenta)
                 .addContainerGap())
         );
 
         jPanel50.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel47.setText("jLabel3");
+        quarentaum.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
         jPanel50.setLayout(jPanel50Layout);
@@ -1062,20 +1109,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel50Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel47)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentaum)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel50Layout.setVerticalGroup(
             jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel50Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel47)
+                .addComponent(quarentaum)
                 .addContainerGap())
         );
 
         jPanel52.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel49.setText("jLabel3");
+        quarentadois.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
         jPanel52.setLayout(jPanel52Layout);
@@ -1083,20 +1130,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel52Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel49)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentadois)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel52Layout.setVerticalGroup(
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel49)
+                .addComponent(quarentadois)
                 .addContainerGap())
         );
 
         jPanel53.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel50.setText("jLabel3");
+        quarentatres.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
         jPanel53.setLayout(jPanel53Layout);
@@ -1104,20 +1151,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel53Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel50)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentatres)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel53Layout.setVerticalGroup(
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel53Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel50)
+                .addComponent(quarentatres)
                 .addContainerGap())
         );
 
         jPanel51.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel48.setText("jLabel3");
+        quarentaquatro.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
         jPanel51.setLayout(jPanel51Layout);
@@ -1125,20 +1172,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel51Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel48)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentaquatro)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel51Layout.setVerticalGroup(
             jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel51Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel48)
+                .addComponent(quarentaquatro)
                 .addContainerGap())
         );
 
         jPanel54.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel51.setText("jLabel3");
+        quarentacinco.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
         jPanel54.setLayout(jPanel54Layout);
@@ -1146,20 +1193,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel54Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel51)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentacinco)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel54Layout.setVerticalGroup(
             jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel54Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel51)
+                .addComponent(quarentacinco)
                 .addContainerGap())
         );
 
         jPanel55.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel52.setText("jLabel3");
+        quarentaseis.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
         jPanel55.setLayout(jPanel55Layout);
@@ -1167,20 +1214,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel55Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel52)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentaseis)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel55Layout.setVerticalGroup(
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel52)
+                .addComponent(quarentaseis)
                 .addContainerGap())
         );
 
         jPanel56.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel53.setText("jLabel3");
+        quarentasete.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel56Layout = new javax.swing.GroupLayout(jPanel56);
         jPanel56.setLayout(jPanel56Layout);
@@ -1188,20 +1235,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel56Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel53)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentasete)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel56Layout.setVerticalGroup(
             jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel56Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel53)
+                .addComponent(quarentasete)
                 .addContainerGap())
         );
 
         jPanel57.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel54.setText("jLabel3");
+        quarentaoito.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel57Layout = new javax.swing.GroupLayout(jPanel57);
         jPanel57.setLayout(jPanel57Layout);
@@ -1209,20 +1256,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel57Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel54)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentaoito)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel57Layout.setVerticalGroup(
             jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel57Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel54)
+                .addComponent(quarentaoito)
                 .addContainerGap())
         );
 
         jPanel58.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel55.setText("jLabel3");
+        quarentanove.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel58Layout = new javax.swing.GroupLayout(jPanel58);
         jPanel58.setLayout(jPanel58Layout);
@@ -1230,20 +1277,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel58Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(quarentanove)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel58Layout.setVerticalGroup(
             jPanel58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel58Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel55)
+                .addComponent(quarentanove)
                 .addContainerGap())
         );
 
         jPanel59.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel56.setText("jLabel3");
+        cinquenta.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel59Layout = new javax.swing.GroupLayout(jPanel59);
         jPanel59.setLayout(jPanel59Layout);
@@ -1251,20 +1298,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel59Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel56)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(cinquenta)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel59Layout.setVerticalGroup(
             jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel59Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel56)
+                .addComponent(cinquenta)
                 .addContainerGap())
         );
 
         jPanel60.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel57.setText("jLabel3");
+        cinquentaum.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel60Layout = new javax.swing.GroupLayout(jPanel60);
         jPanel60.setLayout(jPanel60Layout);
@@ -1272,20 +1319,20 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel60Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel57)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(cinquentaum)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel60Layout.setVerticalGroup(
             jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel60Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel57)
+                .addComponent(cinquentaum)
                 .addContainerGap())
         );
 
         jPanel61.setPreferredSize(new java.awt.Dimension(250, 280));
 
-        jLabel58.setText("jLabel3");
+        cinquentadois.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel61Layout = new javax.swing.GroupLayout(jPanel61);
         jPanel61.setLayout(jPanel61Layout);
@@ -1293,14 +1340,14 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
             jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel61Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel58)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addComponent(cinquentadois)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel61Layout.setVerticalGroup(
             jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel61Layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel58)
+                .addComponent(cinquentadois)
                 .addContainerGap())
         );
 
@@ -1546,9 +1593,15 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void pesquisarPorNomeActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_pesquisarPorNomeActionPerformed
+        String pesquisa = pesquisarPorNome.getText();
+        Connection conexao = new Conexao().getConnection();
+        ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+        ArrayList<Produto> produtosPesquisados = produtoDAO.buscaNomeProduto(pesquisa);
+        this.produtos = produtosPesquisados;
+        limpaLabels();
+        preexer();
+    }//GEN-LAST:event_pesquisarPorNomeActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
@@ -1558,12 +1611,146 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void perfilBotaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_perfilBotaoMouseClicked
         // TODO add your handling code here:
-        TelaPerfilCliente telaPerfilCliente = new TelaPerfilCliente();
+        TelaPerfilCliente telaPerfilCliente = new TelaPerfilCliente(cliente);
         telaPerfilCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaPerfilCliente.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_perfilBotaoMouseClicked
+
+    
+    public void conteudoJlabel(Produto produto, JLabel jlabel){
+        
+        jlabel.setText(produto.getNome());
+        
+    }
+
+    public void preexer(){
+        int aux = 0;
+        for (JLabel label : labels) {
+            if (aux < produtos.size() && produtos.get(aux) != null) {
+                conteudoJlabel(produtos.get(aux), label);
+
+            } 
+            aux++;
+        }
+
+    }
+
+    public ArrayList<JLabel> constroiLabels(){
+        ArrayList<JLabel> lab = new ArrayList<JLabel>();
+
+        lab.add( primeiroLabel);
+        lab.add( segunda);
+        lab.add( terceiro);
+        lab.add( quarto);
+        lab.add( quinta);
+        lab.add( sexta);
+        lab.add( setima);
+        lab.add( oitava);
+        lab.add( nona);
+        lab.add( decima);
+        lab.add( onze);
+        lab.add( doze);
+        lab.add( treze);
+        lab.add( quatorze);
+        lab.add( quinze);
+        lab.add( dezeis);
+        lab.add( dezessete);
+        lab.add( dezoito);
+        lab.add( dezenove);
+        lab.add( vinte);
+        lab.add( vinteum);
+        lab.add( vintedois);
+        lab.add( vintetres);
+        lab.add( vintequatro);
+        lab.add( vintecinco);
+        lab.add( vinteseis);
+        lab.add( vintesete);
+        lab.add( vinteoito);
+        lab.add( vintenove);
+        lab.add( trinta);
+        lab.add( trintaone);
+        lab.add( trintadois);
+        lab.add( trintatres);
+        lab.add( trintaquatro);
+        lab.add( trintacinco);
+        lab.add( trintaseis);
+        lab.add( trintasete);
+        lab.add( trintaoito);
+        lab.add( trintanove);
+        lab.add( quarenta);
+        lab.add( quarentaum);
+        lab.add( quarentadois);
+        lab.add( quarentatres);
+        lab.add( quarentaquatro);
+        lab.add( quarentacinco);
+        lab.add( quarentaseis);
+        lab.add( quarentasete);
+        lab.add( quarentaoito);
+        lab.add( quarentanove);
+        lab.add( cinquenta);
+        lab.add( cinquentaum);
+        lab.add( cinquentadois);
+
+        return lab;
+    }
+
+    public void limpaLabels(){
+
+        primeiroLabel.setText("default");
+        segunda.setText("default");
+        terceiro.setText("default");
+        quarto.setText("default");
+        quinta.setText("default");
+        sexta.setText("default");
+        setima.setText("default");
+        oitava.setText("default");
+        nona.setText("default");
+        decima.setText("default");
+        onze.setText("default");
+        doze.setText("default");
+        treze.setText("default");
+        quatorze.setText("default");
+        quinze.setText("default");
+        dezeis.setText("default");
+        dezessete.setText("default");
+        dezoito.setText("default");
+        dezenove.setText("default");
+        vinte.setText("default");
+        vinteum.setText("default");
+        vintedois.setText("default");
+        vintetres.setText("default");
+        vintequatro.setText("default");
+        vintecinco.setText("default");
+        vinteseis.setText("default");
+        vintesete.setText("default");
+        vinteoito.setText("default");
+        vintenove.setText("default");
+        trinta.setText("default");
+        trintaone.setText("default");
+        trintadois.setText("default");
+        trintatres.setText("default");
+        trintaquatro.setText("default");
+        trintacinco.setText("default");
+        trintaseis.setText("default");
+        trintasete.setText("default");
+        trintaoito.setText("default");
+        trintanove.setText("default");
+        quarenta.setText("default");
+        quarentaum.setText("default");
+        quarentadois.setText("default");
+        quarentatres.setText("default");
+        quarentaquatro.setText("default");
+        quarentacinco.setText("default");
+        quarentaseis.setText("default");
+        quarentasete.setText("default");
+        quarentaoito.setText("default");
+        quarentanove.setText("default");
+        cinquenta.setText("default");
+        cinquentaum.setText("default");
+        cinquentadois.setText("default");
+    }
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         // TODO add your handling code here:
@@ -1571,6 +1758,25 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaProduto.setVisible(true);
     }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void selectCategoriaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_selectCategoriaActionPerformed
+        // TODO add your handling code here:
+        Object selected = selectCategoria.getSelectedItem();
+        
+        if(selected != null){
+            String itemSelecionado = selected.toString();
+            Connection conexao = new Conexao().getConnection();
+            ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
+            ArrayList<Produto> produtosCategorizados = produtoDAO.buscaCategoriaProduto(itemSelecionado);
+            this.produtos = produtosCategorizados;
+            limpaLabels();
+            preexer();
+            
+        }
+    }//GEN-LAST:event_selectCategoriaActionPerformed
+
+    private void primeiroLabelComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_primeiroLabelComponentAdded
+    }//GEN-LAST:event_primeiroLabelComponentAdded
 
     /**
      * @param args the command line arguments
@@ -1602,67 +1808,27 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal_4().setVisible(true);
+                try {
+                    new TelaPrincipal_4(null).setVisible(true);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel cinquenta;
+    private javax.swing.JLabel cinquentadois;
+    private javax.swing.JLabel cinquentaum;
+    private javax.swing.JLabel decima;
+    private javax.swing.JLabel dezeis;
+    private javax.swing.JLabel dezenove;
+    private javax.swing.JLabel dezessete;
+    private javax.swing.JLabel dezoito;
+    private javax.swing.JLabel doze;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1719,6 +1885,51 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel nona;
+    private javax.swing.JLabel oitava;
+    private javax.swing.JLabel onze;
+    private javax.swing.JLabel perfilBotao;
+    private javax.swing.JTextField pesquisarPorNome;
+    private javax.swing.JLabel primeiroLabel;
+    private javax.swing.JLabel quarenta;
+    private javax.swing.JLabel quarentacinco;
+    private javax.swing.JLabel quarentadois;
+    private javax.swing.JLabel quarentanove;
+    private javax.swing.JLabel quarentaoito;
+    private javax.swing.JLabel quarentaquatro;
+    private javax.swing.JLabel quarentaseis;
+    private javax.swing.JLabel quarentasete;
+    private javax.swing.JLabel quarentatres;
+    private javax.swing.JLabel quarentaum;
+    private javax.swing.JLabel quarto;
+    private javax.swing.JLabel quatorze;
+    private javax.swing.JLabel quinta;
+    private javax.swing.JLabel quinze;
+    private javax.swing.JLabel segunda;
+    private javax.swing.JComboBox<String> selectCategoria;
+    private javax.swing.JLabel setima;
+    private javax.swing.JLabel sexta;
+    private javax.swing.JLabel terceiro;
+    private javax.swing.JLabel treze;
+    private javax.swing.JLabel trinta;
+    private javax.swing.JLabel trintacinco;
+    private javax.swing.JLabel trintadois;
+    private javax.swing.JLabel trintanove;
+    private javax.swing.JLabel trintaoito;
+    private javax.swing.JLabel trintaone;
+    private javax.swing.JLabel trintaquatro;
+    private javax.swing.JLabel trintaseis;
+    private javax.swing.JLabel trintasete;
+    private javax.swing.JLabel trintatres;
+    private javax.swing.JLabel vinte;
+    private javax.swing.JLabel vintecinco;
+    private javax.swing.JLabel vintedois;
+    private javax.swing.JLabel vintenove;
+    private javax.swing.JLabel vinteoito;
+    private javax.swing.JLabel vintequatro;
+    private javax.swing.JLabel vinteseis;
+    private javax.swing.JLabel vintesete;
+    private javax.swing.JLabel vintetres;
+    private javax.swing.JLabel vinteum;
     // End of variables declaration//GEN-END:variables
 }
