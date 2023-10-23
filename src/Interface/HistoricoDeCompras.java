@@ -78,7 +78,7 @@ public class HistoricoDeCompras extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id produto", "cnpj vendedor", "quantidade selecionada", "pre�o", "id cliente", "email cliente", "status"
+                "id produto", "cnpj vendedor", "quantidade selecionada", "preço", "id cliente", "email cliente", "status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

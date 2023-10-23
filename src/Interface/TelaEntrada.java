@@ -105,7 +105,7 @@ public class TelaEntrada extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel4.setText("Ainda n�o possui uma conta? Realize cadastro como:");
+        jLabel4.setText("Ainda não possui uma conta? Realize cadastro como:");
 
         btnEntrar.setBackground(new java.awt.Color(0, 35, 100));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

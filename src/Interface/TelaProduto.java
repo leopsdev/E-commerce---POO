@@ -156,7 +156,7 @@ public class TelaProduto extends javax.swing.JFrame {
         );
 
         precoProd.setForeground(new java.awt.Color(0, 35, 100));
-        precoProd.setText("Aqui vai o pre�o");
+        precoProd.setText("Aqui vai o preço");
 
         quantProdCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         quantProdCompra.setToolTipText("");
@@ -165,13 +165,13 @@ public class TelaProduto extends javax.swing.JFrame {
         vendProd.setText("Aqui vai o vendedor");
 
         decriProd.setForeground(new java.awt.Color(0, 35, 100));
-        decriProd.setText("Aqui vai a descri��o");
+        decriProd.setText("Aqui vai a descrição");
 
         nomeProduto.setForeground(new java.awt.Color(0, 35, 100));
         nomeProduto.setText("Aqui vai o nome");
 
         jLabel5.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel5.setText("Pre�o:");
+        jLabel5.setText("Preço:");
 
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
         jLabel4.setText("Quantidade:");
@@ -180,12 +180,12 @@ public class TelaProduto extends javax.swing.JFrame {
         jLabel8.setText("Vendedor:");
 
         jLabel10.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel10.setText("Descri��o:");
+        jLabel10.setText("Descrição:");
 
         jLabel3.setForeground(new java.awt.Color(0, 35, 100));
         jLabel3.setText("Nome:");
 
-        addListaDesejo.setText("Adicionar � lista de desejos");
+        addListaDesejo.setText("Adicionar à lista de desejos");
 
         addCarrinhoDeCompra.setText("Adicionar ao carrinho");
         addCarrinhoDeCompra.addActionListener(new java.awt.event.ActionListener() {

@@ -72,7 +72,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 35, 100));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessàrios", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -134,7 +134,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "Nome", "Descri��o", "Pre�o", "Categoria", "Quantidade"
+                "id", "Nome", "Descrição", "Preço", "Categoria", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {

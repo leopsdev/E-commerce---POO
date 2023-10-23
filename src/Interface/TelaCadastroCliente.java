@@ -140,7 +140,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel7.setText("Endere�o:");
+        jLabel7.setText("Endereço:");
 
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

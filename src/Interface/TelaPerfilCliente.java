@@ -110,7 +110,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
         historicoPedidos.setBackground(new java.awt.Color(153, 153, 255));
         historicoPedidos.setForeground(new java.awt.Color(0, 35, 100));
-        historicoPedidos.setText("Hist�rico de pedidos");
+        historicoPedidos.setText("Histórico de pedidos");
         historicoPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 historicoPedidosActionPerformed(evt);
@@ -172,7 +172,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
 
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel4.setText("Endere�o:");
+        jLabel4.setText("Endereço:");
 
         emailCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +230,7 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 35, 100));
-        jLabel5.setText("Informa��es de usu�rio");
+        jLabel5.setText("Informações de usuário");
 
         voltarTelaPrincipal.setText("Voltar a comprar");
         voltarTelaPrincipal.addActionListener(new java.awt.event.ActionListener() {

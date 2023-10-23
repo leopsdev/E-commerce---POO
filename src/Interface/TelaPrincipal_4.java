@@ -175,7 +175,7 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 35, 100));
 
         selectCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        selectCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
+        selectCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessàrios", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
         selectCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {

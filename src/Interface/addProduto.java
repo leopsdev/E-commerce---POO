@@ -75,14 +75,14 @@ public class AddProduto extends javax.swing.JFrame {
 
         jLabel2.setText("Categoria");
 
-        jLabel3.setText("Pre�o");
+        jLabel3.setText("Preço");
 
-        jLabel4.setText("Descri��o");
+        jLabel4.setText("Descrição");
 
         jLabel5.setText("Quantidade");
 
         catProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        catProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, cal�ados e acess�rios", "beb�s e maternidade", "bolsas e malas", "beleza e sa�de", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/inform�tica", "eletr�nicos", "casa/m�veis", "papelaria/escrit�rio" }));
+        catProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "roupas, calçados e acessàrios", "bebês e maternidade", "bolsas e malas", "beleza e saúde", "esporte", "ferramentas", "produtos para pets", "livros", "jogos e brinquedos", "computadores/informática", "eletrônicos", "casa/móveis", "papelaria/escritório" }));
         catProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
