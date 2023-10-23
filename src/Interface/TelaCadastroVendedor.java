@@ -7,6 +7,8 @@ package Interface;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import dao.Conexao;
 import dao.VendedorDAO;
 import model.Vendedor;
@@ -265,9 +267,12 @@ public class TelaCadastroVendedor extends javax.swing.JFrame {
         VendedorDAO vendedorDAO = new VendedorDAO(conexao);
         vendedorDAO.insertVendedor(vendedor);
 
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        TelaEntrada telaEntrada = new TelaEntrada();
+
+        JOptionPane.showMessageDialog(null, "Vendedor Cadastrado!");
+
         this.dispose();
-        telaPrincipal.setVisible(true);
+        telaEntrada.setVisible(true);
 
     }//GEN-LAST:event_btnCadastroVendedorActionPerformed
 

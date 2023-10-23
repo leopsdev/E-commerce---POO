@@ -7,6 +7,8 @@ package Interface;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import dao.ClienteDAO;
 import dao.Conexao;
 import model.Cliente;
@@ -257,7 +259,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
         String endereco = txtEndereco.getText();
-        Integer cpf_long = Integer.parseInt(cpf);
+        long cpf_long = Long.parseLong(cpf);
 
         Cliente cliente = new Cliente(nome,endereco,email,senha,cpf_long);
         
@@ -265,12 +267,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
         clienteDAO.insertCliente(cliente);
 
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        // TelaPrincipal telaPrincipal = new TelaPrincipal();
+        TelaEntrada TelaEntrada = new TelaEntrada();
         
+        JOptionPane.showMessageDialog(null, "Cliente Cadastrado!");
         
         this.dispose();
 
-        telaPrincipal.setVisible(true);
+        TelaEntrada.setVisible(true);
     }//GEN-LAST:event_btnCadastroClienteActionPerformed
 
     /**
