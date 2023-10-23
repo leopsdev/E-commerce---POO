@@ -74,6 +74,12 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         return total;
     }
 
+    public double frete(){
+        double total = totalCompra();
+        double frete = (total*11)/100;
+        return frete;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,9 +93,9 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         pnlAbaLateral = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
         listaDeDesejosTela = new javax.swing.JButton();
-        carrinhoTela = new javax.swing.JButton();
         historicoTela = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        acompanharPedidos = new javax.swing.JButton();
         voltarTelaPrincipal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -244,20 +250,35 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         listaDeDesejosTela.setForeground(new java.awt.Color(0, 35, 100));
         listaDeDesejosTela.setText("Lista de desejos");
 
-        carrinhoTela.setBackground(new java.awt.Color(153, 153, 255));
-        carrinhoTela.setForeground(new java.awt.Color(0, 35, 100));
-        carrinhoTela.setText("Carrinho de compras");
-
         historicoTela.setBackground(new java.awt.Color(153, 153, 255));
         historicoTela.setForeground(new java.awt.Color(0, 35, 100));
         historicoTela.setText("Hist�rico de pedidos");
         historicoTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historicoTelaActionPerformed(evt);
+                try {
+                    historicoTelaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
         jButton16.setText("Sair");
+
+        acompanharPedidos.setBackground(new java.awt.Color(153, 153, 255));
+        acompanharPedidos.setForeground(new java.awt.Color(0, 35, 100));
+        acompanharPedidos.setText("Acompanhar pedidos");
+        acompanharPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    acompanharPedidosActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
 
         javax.swing.GroupLayout pnlAbaLateralLayout = new javax.swing.GroupLayout(pnlAbaLateral);
         pnlAbaLateral.setLayout(pnlAbaLateralLayout);
@@ -272,9 +293,9 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
                     .addGroup(pnlAbaLateralLayout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(carrinhoTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(listaDeDesejosTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(historicoTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(historicoTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(acompanharPedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlAbaLateralLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton16)))
@@ -286,12 +307,12 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
                 .addGap(134, 134, 134)
                 .addComponent(lblFoto)
                 .addGap(50, 50, 50)
-                .addComponent(carrinhoTela)
+                .addComponent(acompanharPedidos)
                 .addGap(18, 18, 18)
                 .addComponent(listaDeDesejosTela)
                 .addGap(18, 18, 18)
                 .addComponent(historicoTela)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 716, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addGap(20, 20, 20))
         );
@@ -1577,6 +1598,11 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
 
         finalCompra.setText("Finalizar compra");
+        finalCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalCompraActionPerformed(evt);
+            }
+        });
 
         precoTotalCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
@@ -1619,7 +1645,7 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
                     .addComponent(voltarTelaPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFundoLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 645, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 642, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
@@ -1652,8 +1678,10 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void historicoTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoTelaActionPerformed
-        // TODO add your handling code here:
+    private void historicoTelaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_historicoTelaActionPerformed
+        HistoricoDeCompras historicoDeCompras = new HistoricoDeCompras(cliente);
+        historicoDeCompras.setVisible(true);
+        
     }//GEN-LAST:event_historicoTelaActionPerformed
 
     private void voltarTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_voltarTelaPrincipalActionPerformed
@@ -1792,6 +1820,18 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
         carrinhoDAO.updateQuantidade(cliente, produtosCarrinho.get(9), quant_selecionada);
         preexer();
     }//GEN-LAST:event_mudaQuantiProduto10ActionPerformed
+
+    private void finalCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalCompraActionPerformed
+        DadosPedidoEConfirmacao dadosPedidoEConfirmacao = new DadosPedidoEConfirmacao(cliente,produtosCarrinho,quantidades,totalCompra(),frete());
+        dadosPedidoEConfirmacao.setVisible(true);
+
+    }//GEN-LAST:event_finalCompraActionPerformed
+
+    private void acompanharPedidosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_acompanharPedidosActionPerformed
+        AcompanharPedido acompanharPedido = new AcompanharPedido(cliente);
+        acompanharPedido.setVisible(true);
+        
+    }//GEN-LAST:event_acompanharPedidosActionPerformed
 
     public void limpaLabels(){
         for (Produto prod : produtosCarrinho) {
@@ -1939,7 +1979,7 @@ public class TelaCarrinhoDeCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton carrinhoTela;
+    private javax.swing.JButton acompanharPedidos;
     private javax.swing.JLabel descriProduto1;
     private javax.swing.JLabel descriProduto10;
     private javax.swing.JLabel descriProduto2;

@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import dao.Conexao;
 import dao.ProdutoDAO;
 import dao.VendedorDAO;
@@ -196,7 +198,8 @@ public class AddProduto extends javax.swing.JFrame {
         Connection conexao = new Conexao().getConnection();
         ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
         produtoDAO.insertProduto(vendedor.cadastrarProduto2(nome, descricao, preco, categoria, quantidade));
-        
+        JOptionPane.showMessageDialog(null, "Produto adicionado!");
+        this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
