@@ -140,20 +140,21 @@ public class ProdutoDAO {
         statement.setLong(2, produto.getId_produto());
         statement.setLong(3, produto.getVendedor().getCnpj());
 
-        int quantidade_atual = produto.getVendedor().getGer_est().getEstoque().get(produto);
+        int quantidade_atual = quantEmEstoque(produto.getId_produto());
+        int nova_quant = quantidade_atual - quantidade_comprada;
 
-        statement.setInt(1, quantidade_atual - quantidade_comprada);
+        statement.setInt(1, nova_quant);
         statement.execute();
     }
 
-    public void addQuanProduto(Produto produto, int quantidade_comprada) throws SQLException{
+    public void addQuanProduto(Produto produto, int quantidade_adicionada) throws SQLException{
         String sql = "update produtos set quantidade = ? where id = ? and cnpj = ?;";
         PreparedStatement statement = conection.prepareStatement(sql);
         statement.setLong(2, produto.getId_produto());
         statement.setLong(3, produto.getVendedor().getCnpj());
 
         int quantidade_atual = quantEmEstoque(produto.getId_produto());
-        int nova_quant = quantidade_atual + quantidade_comprada;
+        int nova_quant = quantidade_atual + quantidade_adicionada;
 
         statement.setLong(1, nova_quant);
         statement.execute();

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.Cliente;
 import model.Vendedor;
 
 public class VendedorDAO{
@@ -76,6 +77,31 @@ public class VendedorDAO{
         statement.setString(1, vendedor.getEmail());
         statement.setString(2, vendedor.getSenha());
         statement.setLong(3, vendedor.getId());
+        statement.execute();
+    }
+
+    public void updateVendedorNome(Vendedor vendedor, String nome) throws SQLException{
+        String sql = "update vendedor set nome_loja = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, nome);
+        statement.setString(2, vendedor.getEmail());
+        statement.setString(3, vendedor.getSenha());
+        statement.execute();
+    }
+    public void updateVendedorEmail(Vendedor vendedor, String email) throws SQLException{
+        String sql = "update vendedor set email = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, vendedor.getEmail());
+        statement.setString(3, vendedor.getSenha());
+        statement.execute();
+    }
+    public void updateVendedorSenha(Vendedor vendedor, String senha) throws SQLException{
+        String sql = "update vendedor set senha = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, senha);
+        statement.setString(2, vendedor.getEmail());
+        statement.setString(3, vendedor.getSenha());
         statement.execute();
     }
 

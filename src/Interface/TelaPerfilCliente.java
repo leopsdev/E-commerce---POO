@@ -4,8 +4,16 @@
  */
 package Interface;
 
-import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import dao.ClienteDAO;
+import dao.Conexao;
+import dao.ProdutoDAO;
 import model.Cliente;
 
 /**
@@ -42,10 +50,10 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         pnlFundo = new javax.swing.JPanel();
         pnlAbaLateral = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        telaListadeDesejos = new javax.swing.JButton();
+        telaCarrinhoDeCompras = new javax.swing.JButton();
+        historicoPedidos = new javax.swing.JButton();
+        sairConta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,10 +62,10 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         emailCliente = new javax.swing.JTextField();
         senhaCliente = new javax.swing.JTextField();
         endeCliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        editarNome = new javax.swing.JButton();
+        editarEmail = new javax.swing.JButton();
+        editEndereco = new javax.swing.JButton();
+        editarSenha = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         voltarTelaPrincipal = new javax.swing.JButton();
 
@@ -77,34 +85,44 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         lblFoto.setForeground(new java.awt.Color(204, 204, 255));
         lblFoto.setText("Foto Perfil");
 
-        jButton5.setBackground(new java.awt.Color(153, 153, 255));
-        jButton5.setForeground(new java.awt.Color(0, 35, 100));
-        jButton5.setText("Lista de desejos");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        telaListadeDesejos.setBackground(new java.awt.Color(153, 153, 255));
+        telaListadeDesejos.setForeground(new java.awt.Color(0, 35, 100));
+        telaListadeDesejos.setText("Lista de desejos");
+        telaListadeDesejos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                try {
+                    telaListadeDesejosActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(153, 153, 255));
-        jButton6.setForeground(new java.awt.Color(0, 35, 100));
-        jButton6.setText("Carrinho de compras");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        telaCarrinhoDeCompras.setBackground(new java.awt.Color(153, 153, 255));
+        telaCarrinhoDeCompras.setForeground(new java.awt.Color(0, 35, 100));
+        telaCarrinhoDeCompras.setText("Carrinho de compras");
+        telaCarrinhoDeCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                telaCarrinhoDeComprasActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(153, 153, 255));
-        jButton9.setForeground(new java.awt.Color(0, 35, 100));
-        jButton9.setText("Hist�rico de pedidos");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        historicoPedidos.setBackground(new java.awt.Color(153, 153, 255));
+        historicoPedidos.setForeground(new java.awt.Color(0, 35, 100));
+        historicoPedidos.setText("Hist�rico de pedidos");
+        historicoPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                historicoPedidosActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Sair");
+        sairConta.setText("Sair");
+        sairConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairContaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAbaLateralLayout = new javax.swing.GroupLayout(pnlAbaLateral);
         pnlAbaLateral.setLayout(pnlAbaLateralLayout);
@@ -119,12 +137,12 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                     .addGroup(pnlAbaLateralLayout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(pnlAbaLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(telaCarrinhoDeCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(telaListadeDesejos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(historicoPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlAbaLateralLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton10)))
+                        .addComponent(sairConta)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         pnlAbaLateralLayout.setVerticalGroup(
@@ -133,13 +151,13 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                 .addGap(134, 134, 134)
                 .addComponent(lblFoto)
                 .addGap(50, 50, 50)
-                .addComponent(jButton6)
+                .addComponent(telaCarrinhoDeCompras)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(telaListadeDesejos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9)
+                .addComponent(historicoPedidos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                .addComponent(sairConta)
                 .addGap(20, 20, 20))
         );
 
@@ -156,38 +174,57 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 35, 100));
         jLabel4.setText("Endere�o:");
 
-        
         emailCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailClienteActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        editarNome.setText("Editar");
+        editarNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    editarNomeActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editarEmail.setText("Editar");
+        editarEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                try {
+                    editarEmailActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        jButton3.setText("Editar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        editEndereco.setText("Editar");
+        editEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                try {
+                    editEnderecoActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editarSenha.setText("Editar");
+        editarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                try {
+                    editarSenhaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -198,7 +235,12 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         voltarTelaPrincipal.setText("Voltar a comprar");
         voltarTelaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaPrincipalActionPerformed(evt);
+                try {
+                    voltarTelaPrincipalActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -234,10 +276,10 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                                     .addComponent(endeCliente))))
                         .addGap(12, 12, 12)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)
-                            .addComponent(jButton3))
+                            .addComponent(editarNome)
+                            .addComponent(editarEmail)
+                            .addComponent(editarSenha)
+                            .addComponent(editEndereco))
                         .addGap(94, 94, 94))))
         );
         pnlFundoLayout.setVerticalGroup(
@@ -252,22 +294,22 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(editarNome))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(emailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(editarEmail))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(editarSenha))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(endeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(editEndereco))
                 .addGap(60, 113, Short.MAX_VALUE))
         );
 
@@ -289,43 +331,70 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
         emailCliente.setText(cliente.getEmail());
     }//GEN-LAST:event_emailClienteActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    private void editarNomeActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        String nNome = nomeCliente.getText();
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clienteDAO = new ClienteDAO (conexao);
+        clienteDAO.updateClienteNome(cliente, nNome);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void editarEmailActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
+        String nEmail = emailCliente.getText();
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clienteDAO = new ClienteDAO (conexao);
+        clienteDAO.updateClienteEmail(cliente,nEmail);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    private void editEnderecoActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton3ActionPerformed
+        String nEndereco = endeCliente.getText();
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clienteDAO = new ClienteDAO (conexao);
+        clienteDAO.updateClienteEndereco(cliente,nEndereco);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void voltarTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaPrincipalActionPerformed
-        // TODO add your handling code here:
+    private void voltarTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_voltarTelaPrincipalActionPerformed
+        TelaPrincipal_4 telaPrincipal = new TelaPrincipal_4(cliente);
+        telaPrincipal.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_voltarTelaPrincipalActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+    private void editarSenhaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton9ActionPerformed
+        String nSenha = senhaCliente.getText();
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clienteDAO = new ClienteDAO (conexao);
+        clienteDAO.updateClienteSenha(cliente,nSenha);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        TelaCarrinhoDeCompras telaCarrinhoDeCompras = new TelaCarrinhoDeCompras();
+    private void telaListadeDesejosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton6ActionPerformed
+        
+        TelaCarrinhoDeCompras telaCarrinhoDeCompras = new TelaCarrinhoDeCompras(cliente);
         telaCarrinhoDeCompras.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaCarrinhoDeCompras.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void telaCarrinhoDeComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         TelaListaDeDesejos telaListaDeDesejos = new TelaListaDeDesejos();
         telaListaDeDesejos.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaListaDeDesejos.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void historicoPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void sairContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairContaActionPerformed
+        this.dispose();
+        TelaEntrada voltaSistema = new TelaEntrada();
+        voltaSistema.setVisible(true);
+        
+    }//GEN-LAST:event_sairContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,17 +432,14 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton editEndereco;
+    private javax.swing.JButton editarEmail;
+    private javax.swing.JButton editarNome;
+    private javax.swing.JButton editarSenha;
     private javax.swing.JTextField emailCliente;
     private javax.swing.JTextField endeCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton historicoPedidos;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -384,7 +450,10 @@ public class TelaPerfilCliente extends javax.swing.JFrame {
     private javax.swing.JTextField nomeCliente;
     private javax.swing.JPanel pnlAbaLateral;
     private javax.swing.JPanel pnlFundo;
+    private javax.swing.JButton sairConta;
     private javax.swing.JTextField senhaCliente;
+    private javax.swing.JButton telaCarrinhoDeCompras;
+    private javax.swing.JButton telaListadeDesejos;
     private javax.swing.JButton voltarTelaPrincipal;
     // End of variables declaration//GEN-END:variables
 }

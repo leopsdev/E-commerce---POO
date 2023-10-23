@@ -4,17 +4,34 @@
  */
 package Interface;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import dao.Conexao;
+import dao.VendedorDAO;
+import model.Vendedor;
+
 /**
  *
  * @author leope
  */
 public class PerfilVendedor extends javax.swing.JFrame {
+    private Vendedor vendedor;
 
     /**
      * Creates new form PerfilVendedor
      */
-    public PerfilVendedor() {
+    public PerfilVendedor(Vendedor vendedor) {
         initComponents();
+        this.vendedor = vendedor;
+
+        nomeVendedor.setText(vendedor.getNome());
+        emailVendedor.setText(vendedor.getEmail());
+        senhaVendedor.setText(vendedor.getSenha());
+        cnpjLoja.setText(Long.toString(vendedor.getCnpj()));
+        decriLoja.setText(vendedor.getDescricao_empresa());
     }
 
     /**
@@ -28,26 +45,25 @@ public class PerfilVendedor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        decriLoja = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        cnpjLoja = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        editarPerfil = new javax.swing.JButton();
-        sairSys = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        changeName = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        editarSenha = new javax.swing.JButton();
+        emailVendedor = new javax.swing.JTextField();
+        nomeVendedor = new javax.swing.JTextField();
+        senhaVendedor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        editarPerfil1 = new javax.swing.JButton();
-        editarPerfil2 = new javax.swing.JButton();
+        editarNome = new javax.swing.JButton();
+        editarEmail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 35, 100));
 
-        jLabel1.setText("jLabel1");
+        decriLoja.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -55,18 +71,18 @@ public class PerfilVendedor extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(decriLoja, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jLabel1)
+                .addComponent(decriLoja)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("jLabel2");
+        cnpjLoja.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -74,14 +90,14 @@ public class PerfilVendedor extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cnpjLoja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jLabel2)
+                .addComponent(cnpjLoja)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -115,20 +131,23 @@ public class PerfilVendedor extends javax.swing.JFrame {
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        editarPerfil.setText("Editar");
-        editarPerfil.addActionListener(new java.awt.event.ActionListener() {
+        editarSenha.setText("Editar");
+        editarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarPerfilActionPerformed(evt);
+                try {
+                    editarSenhaActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        sairSys.setText("Sair");
+        emailVendedor.setText("jTextField1");
 
-        jTextField1.setText("jTextField1");
+        nomeVendedor.setText("jTextField1");
 
-        changeName.setText("jTextField1");
-
-        jTextField2.setText("jTextField1");
+        senhaVendedor.setText("jTextField1");
 
         jLabel4.setText("Nome");
 
@@ -136,17 +155,27 @@ public class PerfilVendedor extends javax.swing.JFrame {
 
         jLabel6.setText("Senha");
 
-        editarPerfil1.setText("Editar");
-        editarPerfil1.addActionListener(new java.awt.event.ActionListener() {
+        editarNome.setText("Editar");
+        editarNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarPerfil1ActionPerformed(evt);
+                try {
+                    editarNomeActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
-        editarPerfil2.setText("Editar");
-        editarPerfil2.addActionListener(new java.awt.event.ActionListener() {
+        editarEmail.setText("Editar");
+        editarEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarPerfil2ActionPerformed(evt);
+                try {
+                    editarEmailActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -158,18 +187,17 @@ public class PerfilVendedor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(sairSys, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(changeName)
+                    .addComponent(emailVendedor)
+                    .addComponent(senhaVendedor)
+                    .addComponent(nomeVendedor)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(editarPerfil2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4)
-                            .addComponent(editarPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 154, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -182,40 +210,54 @@ public class PerfilVendedor extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(changeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editarPerfil1)
+                        .addComponent(editarNome)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emailVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editarPerfil2)
+                        .addComponent(editarEmail)
                         .addGap(42, 42, 42)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(senhaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editarPerfil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sairSys, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(editarSenha)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarPerfilActionPerformed
+    private void editarSenhaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_editarSenhaActionPerformed
+        String nSenha = senhaVendedor.getText();
+        Connection conexao = new Conexao().getConnection();
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
+        vendedorDAO.updateVendedorSenha(vendedor, nSenha);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
+        
+    }//GEN-LAST:event_editarSenhaActionPerformed
 
-    private void editarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfil1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarPerfil1ActionPerformed
+    private void editarNomeActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_editarNomeActionPerformed
+        String nNome = nomeVendedor.getText();
+        Connection conexao = new Conexao().getConnection();
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
+        vendedorDAO.updateVendedorNome(vendedor, nNome);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
 
-    private void editarPerfil2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfil2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarPerfil2ActionPerformed
+    }//GEN-LAST:event_editarNomeActionPerformed
+
+    private void editarEmailActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_editarEmailActionPerformed
+        String nEmail = emailVendedor.getText();
+        Connection conexao = new Conexao().getConnection();
+        VendedorDAO vendedorDAO = new VendedorDAO(conexao);
+        vendedorDAO.updateVendedorEmail(vendedor, nEmail);
+        JOptionPane.showMessageDialog(null,"Atualização feita com sucesso");
+        
+    }//GEN-LAST:event_editarEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,18 +289,18 @@ public class PerfilVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PerfilVendedor().setVisible(true);
+                new PerfilVendedor(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField changeName;
-    private javax.swing.JButton editarPerfil;
-    private javax.swing.JButton editarPerfil1;
-    private javax.swing.JButton editarPerfil2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel cnpjLoja;
+    private javax.swing.JLabel decriLoja;
+    private javax.swing.JButton editarEmail;
+    private javax.swing.JButton editarNome;
+    private javax.swing.JButton editarSenha;
+    private javax.swing.JTextField emailVendedor;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -266,8 +308,7 @@ public class PerfilVendedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton sairSys;
+    private javax.swing.JTextField nomeVendedor;
+    private javax.swing.JTextField senhaVendedor;
     // End of variables declaration//GEN-END:variables
 }

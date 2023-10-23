@@ -188,7 +188,6 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         });
 
         pesquisarPorNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pesquisarPorNome.setText("Pesquisar");
         pesquisarPorNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         pesquisarPorNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +204,12 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jLabel1.setText("Carrinho de compras");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                try {
+                    jLabel1MouseClicked(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -283,6 +287,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel8.setPreferredSize(new java.awt.Dimension(250, 280));
 
         segunda.setText("default");
+        segunda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -304,6 +313,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel9.setPreferredSize(new java.awt.Dimension(250, 280));
 
         terceiro.setText("default");
+        terceiro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                terceiroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -325,6 +339,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel10.setPreferredSize(new java.awt.Dimension(250, 280));
 
         quarto.setText("default");
+        quarto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quartoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -346,6 +365,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel11.setPreferredSize(new java.awt.Dimension(250, 280));
 
         quinta.setText("jLabel3");
+        quinta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quintaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -367,6 +391,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel12.setPreferredSize(new java.awt.Dimension(250, 280));
 
         sexta.setText("jLabel3");
+        sexta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sextaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -388,6 +417,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel13.setPreferredSize(new java.awt.Dimension(250, 280));
 
         setima.setText("jLabel3");
+        setima.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                setimaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -409,6 +443,11 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         jPanel14.setPreferredSize(new java.awt.Dimension(250, 280));
 
         oitava.setText("jLabel3");
+        oitava.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                oitavaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1603,17 +1642,19 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
         preexer();
     }//GEN-LAST:event_pesquisarPorNomeActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        TelaCarrinhoDeCompras telaCarrinhoDeCompras = new TelaCarrinhoDeCompras();
+        TelaCarrinhoDeCompras telaCarrinhoDeCompras = new TelaCarrinhoDeCompras(cliente);
         telaCarrinhoDeCompras.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaCarrinhoDeCompras.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void perfilBotaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_perfilBotaoMouseClicked
         // TODO add your handling code here:
         TelaPerfilCliente telaPerfilCliente = new TelaPerfilCliente(cliente);
+        this.dispose();
         telaPerfilCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
         telaPerfilCliente.setVisible(true);
     }//GEN-LAST:event_perfilBotaoMouseClicked
@@ -1754,9 +1795,14 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         // TODO add your handling code here:
-        TelaProduto telaProduto = new TelaProduto();
-        telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        telaProduto.setVisible(true);
+
+        if (produtos.get(0)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(0),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void selectCategoriaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_selectCategoriaActionPerformed
@@ -1777,6 +1823,71 @@ public class TelaPrincipal_4 extends javax.swing.JFrame {
 
     private void primeiroLabelComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_primeiroLabelComponentAdded
     }//GEN-LAST:event_primeiroLabelComponentAdded
+
+    private void segundaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaMouseClicked
+        
+        if (produtos.get(1)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(1),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_segundaMouseClicked
+
+    private void terceiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceiroMouseClicked
+        if (produtos.get(2)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(2),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_terceiroMouseClicked
+
+    private void quartoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quartoMouseClicked
+        if (produtos.get(3)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(3),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_quartoMouseClicked
+
+    private void quintaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quintaMouseClicked
+        if (produtos.get(4)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(4),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_quintaMouseClicked
+
+    private void sextaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sextaMouseClicked
+        if (produtos.get(5)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(5),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_sextaMouseClicked
+
+    private void setimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setimaMouseClicked
+        if (produtos.get(6)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(6),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_setimaMouseClicked
+
+    private void oitavaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oitavaMouseClicked
+        if (produtos.get(7)!=null) {
+            TelaProduto telaProduto = new TelaProduto(produtos.get(7),cliente);
+            telaProduto.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaProduto.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_oitavaMouseClicked
 
     /**
      * @param args the command line arguments

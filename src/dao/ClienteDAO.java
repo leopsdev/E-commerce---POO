@@ -37,6 +37,38 @@ public class ClienteDAO{
         statement.setLong(3, cliente.getId());
         statement.execute();
     }
+    public void updateClienteNome(Cliente cliente, String nome) throws SQLException{
+        String sql = "update usuario set nome = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, nome);
+        statement.setString(2, cliente.getEmail());
+        statement.setString(3, cliente.getSenha());
+        statement.execute();
+    }
+    public void updateClienteEmail(Cliente cliente, String email) throws SQLException{
+        String sql = "update usuario set email = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, cliente.getEmail());
+        statement.setString(3, cliente.getSenha());
+        statement.execute();
+    }
+    public void updateClienteSenha(Cliente cliente, String senha) throws SQLException{
+        String sql = "update usuario set senha = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, senha);
+        statement.setString(2, cliente.getEmail());
+        statement.setString(3, cliente.getSenha());
+        statement.execute();
+    }
+    public void updateClienteEndereco(Cliente cliente, String endereco) throws SQLException{
+        String sql = "update usuario set endereco = ? where email = ? and senha = ?;";
+        PreparedStatement statement = conection.prepareStatement(sql);
+        statement.setString(1, endereco);
+        statement.setString(2, cliente.getEmail());
+        statement.setString(3, cliente.getSenha());
+        statement.execute();
+    }
 
     public void deleteCliente(Cliente cliente) throws SQLException{
         String sql = "delete from usuario where id = ?;";

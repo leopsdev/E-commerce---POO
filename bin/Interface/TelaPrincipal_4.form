@@ -520,6 +520,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="default"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="segundaMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -555,6 +558,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="default"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="terceiroMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -590,6 +596,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="default"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quartoMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -625,6 +634,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel3"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quintaMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -660,6 +672,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel3"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sextaMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -695,6 +710,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel3"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setimaMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -730,6 +748,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel3"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="oitavaMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

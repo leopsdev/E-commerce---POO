@@ -269,6 +269,7 @@ public class TelaEntrada extends javax.swing.JFrame {
                 Vendedor vend = vendedorDAO.selectPorEmailSenha(email, senha);
                 VendedorPrincipal telaVendedor = new VendedorPrincipal(vend);
                 telaVendedor.setVisible(true);
+                this.dispose();
             } else{
                 JOptionPane.showMessageDialog(null, "Conta inexistente!");
             }

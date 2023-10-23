@@ -3,6 +3,10 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1920, 1080]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -46,11 +50,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="pnlAbaLateral" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="659" max="-2" attributes="0"/>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton8" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="voltarTelaPrincipal" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="659" max="-2" attributes="0"/>
+                          <EmptySpace pref="645" max="32767" attributes="0"/>
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -61,15 +67,15 @@
               <Component id="pnlAbaLateral" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jButton8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane1" min="-2" pref="580" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="2296" max="32767" attributes="0"/>
+                  <Component id="voltarTelaPrincipal" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="430" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="579" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,9 +101,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton9" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="carrinhoTela" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="listaDeDesejosTela" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="historicoTela" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -115,11 +121,11 @@
                       <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       <Component id="lblFoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                      <Component id="carrinhoTela" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="listaDeDesejosTela" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                      <Component id="historicoTela" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -139,7 +145,7 @@
                 <Property name="text" type="java.lang.String" value="Foto Perfil"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="listaDeDesejosTela">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -150,7 +156,7 @@
                 <Property name="text" type="java.lang.String" value="Lista de desejos"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="carrinhoTela">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -161,7 +167,7 @@
                 <Property name="text" type="java.lang.String" value="Carrinho de compras"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton9">
+            <Component class="javax.swing.JButton" name="historicoTela">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -172,7 +178,7 @@
                 <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de pedidos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historicoTelaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton16">
@@ -182,12 +188,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="voltarTelaPrincipal">
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar a comprar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarTelaPrincipalActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -222,8 +228,8 @@
                               <Component id="jPanel10" alignment="0" pref="635" max="32767" attributes="0"/>
                               <Component id="jPanel11" alignment="0" pref="635" max="32767" attributes="0"/>
                               <Component id="jPanel12" alignment="0" pref="635" max="32767" attributes="0"/>
-                              <Component id="jPanel13" alignment="0" pref="635" max="32767" attributes="0"/>
-                              <Component id="jPanel15" alignment="0" pref="635" max="32767" attributes="0"/>
+                              <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel15" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel4" alignment="0" pref="635" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -282,33 +288,33 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel11" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto1" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -323,30 +329,30 @@
                                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="50" max="32767" attributes="0"/>
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -394,27 +400,39 @@
                         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="removeProduto1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto1ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto1ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel6">
+                    <Component class="javax.swing.JLabel" name="precoProduto1">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -422,7 +440,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o pre&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="nomeProduto1">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -438,7 +456,7 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel9">
+                    <Component class="javax.swing.JLabel" name="vendProduto1">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -454,7 +472,7 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
+                    <Component class="javax.swing.JLabel" name="descriProduto1">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -485,31 +503,31 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomeProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                      <Component id="precoProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                      <Component id="vendProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel16" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="descriProduto2" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="mudaQuantProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace pref="260" max="-2" attributes="0"/>
-                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -526,30 +544,30 @@
                                       <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -566,7 +584,7 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel20">
+                    <Component class="javax.swing.JLabel" name="precoProduto2">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -574,7 +592,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o pre&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel17">
+                    <Component class="javax.swing.JLabel" name="vendProduto2">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -598,12 +616,15 @@
                         <Property name="text" type="java.lang.String" value="Nome:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="removeProduto2">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto2ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel16">
+                    <Component class="javax.swing.JLabel" name="descriProduto2">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -611,7 +632,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai a descri&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel13">
+                    <Component class="javax.swing.JLabel" name="nomeProduto2">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -635,17 +656,26 @@
                         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto2ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -684,31 +714,31 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomeProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <Component id="precoProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                      <Component id="vendProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel24" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="descriProduto3" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="mudaQuantProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace pref="260" max="-2" attributes="0"/>
-                                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -724,30 +754,30 @@
                                       <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel32" alignment="0" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -757,7 +787,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel23">
+                    <Component class="javax.swing.JLabel" name="vendProduto3">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -773,7 +803,7 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
+                    <Component class="javax.swing.JLabel" name="precoProduto3">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -781,7 +811,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o pre&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel25">
+                    <Component class="javax.swing.JLabel" name="nomeProduto3">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -797,22 +827,34 @@
                         <Property name="text" type="java.lang.String" value="Nome:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton4">
+                    <Component class="javax.swing.JButton" name="removeProduto3">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto3ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto3ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -841,7 +883,7 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel24">
+                    <Component class="javax.swing.JLabel" name="descriProduto3">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -883,31 +925,31 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomeProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                      <Component id="precoProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                      <Component id="vendProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel41" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="descriProduto4" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="mudaQuantProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace pref="260" max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -923,30 +965,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel12" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -967,7 +1009,7 @@
                         <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel39">
+                    <Component class="javax.swing.JLabel" name="precoProduto4">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -991,12 +1033,15 @@
                         <Property name="text" type="java.lang.String" value="Quantidade:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton7">
+                    <Component class="javax.swing.JButton" name="removeProduto4">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto4ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel41">
+                    <Component class="javax.swing.JLabel" name="descriProduto4">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1020,7 +1065,7 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel42">
+                    <Component class="javax.swing.JLabel" name="nomeProduto4">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1028,22 +1073,31 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto4ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel40">
+                    <Component class="javax.swing.JLabel" name="vendProduto4">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1084,33 +1138,33 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto5" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto5" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto5" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel51" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto5" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox5" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto5" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace pref="278" max="32767" attributes="0"/>
-                                      <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto5" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1126,30 +1180,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto5" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel34" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -1178,7 +1232,7 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel48">
+                    <Component class="javax.swing.JLabel" name="precoProduto5">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1186,12 +1240,15 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o pre&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton10">
+                    <Component class="javax.swing.JButton" name="removeProduto5">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto5ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel55">
+                    <Component class="javax.swing.JLabel" name="vendProduto5">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1215,22 +1272,31 @@
                         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox5">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto5ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel54">
+                    <Component class="javax.swing.JLabel" name="nomeProduto5">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1254,7 +1320,7 @@
                         <Property name="text" type="java.lang.String" value="Nome:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel51">
+                    <Component class="javax.swing.JLabel" name="descriProduto5">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1287,33 +1353,33 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel65" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto6" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox6" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1329,30 +1395,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel35" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -1373,7 +1439,7 @@
                         <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel65">
+                    <Component class="javax.swing.JLabel" name="descriProduto6">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1381,7 +1447,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai a descri&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel58">
+                    <Component class="javax.swing.JLabel" name="precoProduto6">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1389,22 +1455,31 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o pre&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox6">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto6ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel59">
+                    <Component class="javax.swing.JLabel" name="vendProduto6">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1412,10 +1487,13 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o vendedor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton11">
+                    <Component class="javax.swing.JButton" name="removeProduto6">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto6ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel63">
                       <Properties>
@@ -1441,7 +1519,7 @@
                         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel62">
+                    <Component class="javax.swing.JLabel" name="nomeProduto6">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1490,33 +1568,33 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel73" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto7" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto7" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto7" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel66" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto7" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox7" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto7" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto7" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1532,30 +1610,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel73" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel74" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto7" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel36" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -1576,7 +1654,7 @@
                         <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel68">
+                    <Component class="javax.swing.JLabel" name="vendProduto7">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1584,7 +1662,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o vendedor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel66">
+                    <Component class="javax.swing.JLabel" name="descriProduto7">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1592,27 +1670,36 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai a descri&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox7">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto7">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto7ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton12">
+                    <Component class="javax.swing.JButton" name="removeProduto7">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto7ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel73">
@@ -1647,7 +1734,7 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel72">
+                    <Component class="javax.swing.JLabel" name="nomeProduto7">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1655,7 +1742,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel67">
+                    <Component class="javax.swing.JLabel" name="precoProduto7">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1696,34 +1783,34 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto8" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel82" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto8" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel75" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto8" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel76" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto8" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox8" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto8" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton13" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1739,30 +1826,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel80" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel75" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel83" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel78" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto8" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Component id="jButton13" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto8" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel37" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -1807,15 +1894,15 @@
                         <Property name="text" type="java.lang.String" value="Quantidade:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton13">
+                    <Component class="javax.swing.JButton" name="removeProduto8">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto8ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel75">
+                    <Component class="javax.swing.JLabel" name="vendProduto8">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1823,7 +1910,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o vendedor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel76">
+                    <Component class="javax.swing.JLabel" name="descriProduto8">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1839,7 +1926,7 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel82">
+                    <Component class="javax.swing.JLabel" name="precoProduto8">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1855,22 +1942,31 @@
                         <Property name="text" type="java.lang.String" value="Nome:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox8">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto8">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto8ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel81">
+                    <Component class="javax.swing.JLabel" name="nomeProduto8">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1900,33 +1996,33 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel91" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel92" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel85" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel89" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel87" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel88" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto9" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel86" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantProduto9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton14" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto9" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1942,30 +2038,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel91" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel92" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel84" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel88" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel89" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel87" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel86" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantProduto9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel85" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel90" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton14" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto9" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel33" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -1986,7 +2082,7 @@
                         <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel92">
+                    <Component class="javax.swing.JLabel" name="nomeProduto9">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -1994,7 +2090,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel90">
+                    <Component class="javax.swing.JLabel" name="precoProduto9">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2010,17 +2106,26 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox9">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantProduto9">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantProduto9ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -2049,10 +2154,13 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton14">
+                    <Component class="javax.swing.JButton" name="removeProduto9">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProduto9ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel86">
                       <Properties>
@@ -2062,7 +2170,7 @@
                         <Property name="text" type="java.lang.String" value="Quantidade:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel87">
+                    <Component class="javax.swing.JLabel" name="vendProduto9">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2070,7 +2178,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o vendedor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel88">
+                    <Component class="javax.swing.JLabel" name="descriProduto9">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2100,33 +2208,33 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel96" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel93" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nomeProduto10" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel97" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel94" min="-2" max="-2" attributes="0"/>
+                                              <Component id="precoProduto10" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel98" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel100" min="-2" max="-2" attributes="0"/>
+                                              <Component id="vendProduto10" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel95" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel101" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="descriProduto10" min="-2" pref="180" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox10" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mudaQuantiProduto10" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton15" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2142,30 +2250,30 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel96" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel93" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomeProduto10" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel95" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="descriProduto10" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel98" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel100" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vendProduto10" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mudaQuantiProduto10" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel97" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel94" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoProduto10" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jButton15" min="-2" max="-2" attributes="0"/>
+                                      <Component id="removeProduto" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel38" pref="268" max="32767" attributes="0"/>
                               </Group>
@@ -2194,7 +2302,7 @@
                         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel93">
+                    <Component class="javax.swing.JLabel" name="nomeProduto10">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2202,7 +2310,7 @@
                         <Property name="text" type="java.lang.String" value="Aqui vai o nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel94">
+                    <Component class="javax.swing.JLabel" name="precoProduto10">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2226,27 +2334,39 @@
                         <Property name="text" type="java.lang.String" value="Vendedor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton15">
+                    <Component class="javax.swing.JButton" name="removeProduto">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProdutoActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox10">
+                    <Component class="javax.swing.JComboBox" name="mudaQuantiProduto10">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="10">
+                            <StringItem index="0" value="1"/>
+                            <StringItem index="1" value="2"/>
+                            <StringItem index="2" value="3"/>
+                            <StringItem index="3" value="4"/>
+                            <StringItem index="4" value="5"/>
+                            <StringItem index="5" value="6"/>
+                            <StringItem index="6" value="7"/>
+                            <StringItem index="7" value="8"/>
+                            <StringItem index="8" value="9"/>
+                            <StringItem index="9" value="10"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudaQuantiProduto10ActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel100">
+                    <Component class="javax.swing.JLabel" name="vendProduto10">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2262,7 +2382,7 @@
                         <Property name="text" type="java.lang.String" value="Quantidade:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel101">
+                    <Component class="javax.swing.JLabel" name="descriProduto10">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="23" red="0" type="rgb"/>
@@ -2299,8 +2419,8 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextField1" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="finalCompra" max="32767" attributes="0"/>
+                          <Component id="precoTotalCompra" min="-2" pref="117" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
@@ -2312,22 +2432,22 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="precoTotalCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="finalCompra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="finalCompra">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Finalizar compra"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+            <Component class="javax.swing.JFormattedTextField" name="precoTotalCompra">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format subtype="0" type="4"/>

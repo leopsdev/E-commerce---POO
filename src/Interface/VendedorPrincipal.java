@@ -60,8 +60,11 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         editProd = new javax.swing.JButton();
         visuEntregas = new javax.swing.JButton();
         attTabela = new javax.swing.JButton();
+        sairConta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -187,6 +190,13 @@ public class VendedorPrincipal extends javax.swing.JFrame {
             }
         });
 
+        sairConta.setText("Sair");
+        sairConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairContaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -194,6 +204,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sairConta, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(attTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(visuEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +222,9 @@ public class VendedorPrincipal extends javax.swing.JFrame {
                 .addComponent(visuEntregas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(attTabela)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(sairConta)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -309,8 +322,9 @@ public class VendedorPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_addProdActionPerformed
 
     private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
-        PerfilVendedor telaPerfilVendedor = new PerfilVendedor();
+        PerfilVendedor telaPerfilVendedor = new PerfilVendedor(vendedor);
         telaPerfilVendedor.setVisible(true);
+        
     }//GEN-LAST:event_PerfilActionPerformed
 
     private void visuEntregasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visuEntregasActionPerformed
@@ -324,6 +338,13 @@ public class VendedorPrincipal extends javax.swing.JFrame {
         this.produtos = produtosCategorizados;
         readJtable();
     }//GEN-LAST:event_attTabelaActionPerformed
+
+    private void sairContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairContaActionPerformed
+        this.dispose();
+        TelaEntrada voltaSistema = new TelaEntrada();
+        voltaSistema.setVisible(true);
+
+    }//GEN-LAST:event_sairContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +413,7 @@ public class VendedorPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton sairConta;
     private javax.swing.JTable tabelaProdutos;
     private javax.swing.JButton visuEntregas;
     // End of variables declaration//GEN-END:variables
